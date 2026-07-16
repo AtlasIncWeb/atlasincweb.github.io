@@ -66,6 +66,9 @@
   :root[data-theme="dark"] .btn-ghost:hover{color:var(--brass);}
   @media (prefers-color-scheme:dark){.btn-ghost:hover{color:var(--brass);}}
   .btn:focus-visible{outline:2px solid var(--brass);outline-offset:3px;}
+  .btn .ic{width:15px;height:15px;flex:0 0 auto;}
+  .nav .btn{padding:.6em 1.05em;font-size:.9rem;}
+  @media (max-width:560px){.hdr-num{display:none;}}
 
   /* header */
   header.site{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);
@@ -273,6 +276,7 @@
     </a>
     <div class="nav-right">
       <span class="coord">41.70°N&nbsp;&nbsp;71.42°W</span>
+      <a class="btn btn-primary" href="tel:+14013174668" aria-label="Call Atlas Inc at (401) 317-4668"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg><span class="hdr-num">(401) 317-4668</span></a>
       <a class="btn btn-ghost" href="mailto:atlasinc.web@gmail.com?subject=Free%20two%20weeks%20for%20my%20business&body=Hi%20Atlas%20%E2%80%94%20I%27d%20like%20to%20learn%20more.%20My%20business%20is%3A">Email</a>
     </div>
   </div>
@@ -367,6 +371,9 @@
           <h3>You keep it or walk</h3>
           <p>Love it? It&rsquo;s $500/month, all in. Don&rsquo;t? Walk away, no card, no hard feelings. That&rsquo;s the deal.</p>
         </div>
+      </div>
+      <div class="reveal" style="margin-top:40px;display:flex;justify-content:center;">
+        <a class="btn btn-ghost btn-lg" href="tel:+14013174668"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>Prefer to talk? Call (401) 317-4668</a>
       </div>
     </div>
   </section>
@@ -527,9 +534,10 @@
       </svg>
       Atlas Inc.
     </div>
+    <a class="btn btn-primary" href="tel:+14013174668" aria-label="Call Atlas Inc at (401) 317-4668"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>Call (401) 317-4668</a>
     <div class="meta">
       Local marketing, done for you<br>
-      Warwick, Rhode Island &middot; atlasinc.web@gmail.com
+      Warwick, Rhode Island &middot; <a href="tel:+14013174668" style="border-bottom:1px solid var(--brass);">(401) 317-4668</a> &middot; atlasinc.web@gmail.com
     </div>
   </div>
 </footer>
