@@ -163,6 +163,18 @@
   .side-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:11px;font-size:.98rem;color:#C9D6D3;}
   .side-list li{display:flex;gap:10px;align-items:flex-start;}
   .side-list .dot{color:var(--brass);}
+  .btn-lg{font-size:1.12rem;padding:1.05em 2.15em;}
+  .price-banner{margin-top:34px;padding:26px 30px;border-radius:14px;
+    background:var(--ink);color:#EAF0ED;display:flex;flex-wrap:wrap;
+    align-items:center;justify-content:space-between;gap:22px;
+    box-shadow:0 20px 44px -26px rgba(8,20,26,.55);}
+  :root[data-theme="dark"] .price-banner{background:#081820;}
+  @media (prefers-color-scheme:dark){.price-banner{background:#081820;}}
+  .pb-title{font-family:var(--display);font-weight:600;font-size:clamp(1.35rem,3vw,1.7rem);line-height:1.15;}
+  .pb-sub{margin-top:7px;color:#9FB4B4;font-size:1rem;}
+  .pb-actions{display:flex;flex-wrap:wrap;gap:12px;}
+  .price-banner .btn-ghost{border-color:rgba(255,255,255,.32);color:#EAF0ED;}
+  .price-banner .btn-ghost:hover{border-color:var(--brass);color:var(--brass);}
 
   /* work samples — premium branded post cards */
   .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;}
@@ -261,7 +273,7 @@
     </a>
     <div class="nav-right">
       <span class="coord">41.70°N&nbsp;&nbsp;71.42°W</span>
-      <a class="btn btn-primary" href="mailto:atlasinc.web@gmail.com?subject=Free%20two%20weeks%20for%20my%20business">Email us</a>
+      <a class="btn btn-primary" href="https://buy.stripe.com/aFa8wPcnZ28VdbE3cx48004">Start now</a>
     </div>
   </div>
 </header>
@@ -274,10 +286,10 @@
       <h1>Put your business on the map.</h1>
       <p class="lede">Atlas runs the website, the posts, and the Google presence for local shops and studios &mdash; so you can run the business.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="mailto:atlasinc.web@gmail.com?subject=Free%20two%20weeks%20for%20my%20business&body=Hi%20Atlas%20%E2%80%94%20I%27d%20like%20to%20start%20the%20free%20two%20weeks.%20My%20business%20is%3A">Start your free two weeks</a>
+        <a class="btn btn-primary" href="https://buy.stripe.com/aFa8wPcnZ28VdbE3cx48004">Start now</a>
         <a class="btn btn-ghost" href="#included">See what's included</a>
       </div>
-      <p class="fine" style="margin-top:18px;">No card to start &middot; Cancel anytime &middot; Based in Warwick, RI</p>
+      <p class="fine" style="margin-top:18px;">Two weeks free, then $500/mo &middot; cancel anytime &middot; <a href="mailto:atlasinc.web@gmail.com?subject=Free%20two%20weeks%20for%20my%20business&body=Hi%20Atlas%20%E2%80%94%20I%27d%20like%20to%20start%20the%20free%20two%20weeks.%20My%20business%20is%3A" style="border-bottom:1px solid var(--brass);">or start free with no card</a></p>
     </div>
   </section>
 
@@ -394,6 +406,16 @@
           </div>
         </div>
       </div>
+      <div class="price-banner reveal">
+        <div class="pb-copy">
+          <div class="pb-title">Ready to put your business on the map?</div>
+          <div class="pb-sub">Two weeks free, then $500/month &mdash; cancel anytime, no contract.</div>
+        </div>
+        <div class="pb-actions">
+          <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/aFa8wPcnZ28VdbE3cx48004">Start now</a>
+          <a class="btn btn-ghost" href="mailto:atlasinc.web@gmail.com?subject=Free%20two%20weeks%20for%20my%20business&body=Hi%20Atlas%20%E2%80%94%20I%27d%20like%20to%20start%20the%20free%20two%20weeks.%20My%20business%20is%3A">Start free, no card</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -504,10 +526,10 @@
       <h2>Let&rsquo;s put your business on the map.</h2>
       <p>One email starts your free two weeks. We&rsquo;ll take it from there.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="mailto:atlasinc.web@gmail.com?subject=Free%20two%20weeks%20for%20my%20business&body=Hi%20Atlas%20%E2%80%94%20I%27d%20like%20to%20start%20the%20free%20two%20weeks.%20My%20business%20is%3A">Start your free two weeks</a>
-        <a class="btn btn-ghost" href="tel:+17372583742">Call (737) 258-3742</a>
+        <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/aFa8wPcnZ28VdbE3cx48004">Start now</a>
+        <a class="btn btn-ghost" href="mailto:atlasinc.web@gmail.com?subject=Free%20two%20weeks%20for%20my%20business&body=Hi%20Atlas%20%E2%80%94%20I%27d%20like%20to%20start%20the%20free%20two%20weeks.%20My%20business%20is%3A">Start free, no card</a>
       </div>
-      <p class="mail">or call <a href="tel:+17372583742">(737) 258-3742</a> &middot; email <a href="mailto:atlasinc.web@gmail.com">atlasinc.web@gmail.com</a></p>
+      <p class="mail">14 days free, then $500/mo &middot; cancel anytime &middot; or email <a href="mailto:atlasinc.web@gmail.com">atlasinc.web@gmail.com</a></p>
     </div>
   </section>
 </main>
@@ -524,7 +546,7 @@
     </div>
     <div class="meta">
       Local marketing, done for you<br>
-      Warwick, Rhode Island &middot; <a href="tel:+17372583742">(737) 258-3742</a> &middot; atlasinc.web@gmail.com
+      Warwick, Rhode Island &middot; atlasinc.web@gmail.com
     </div>
   </div>
 </footer>
