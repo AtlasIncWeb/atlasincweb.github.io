@@ -283,12 +283,15 @@
   .m-form{margin-top:22px;display:flex;flex-direction:column;gap:14px;}
   .m-field label{display:block;font-family:var(--mono);font-size:.68rem;
     letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:7px;}
-  .m-field input{width:100%;font-family:var(--body);font-size:1rem;color:var(--ink);
-    background:var(--surface-2);border:1px solid var(--line);border-radius:10px;
-    padding:.8em .9em;transition:border-color .15s ease,box-shadow .15s ease;}
-  .m-field input::placeholder{color:var(--ink-faint);opacity:.75;}
-  .m-field input:focus{outline:none;border-color:var(--brass);
+  .m-field input,.m-field textarea{width:100%;font-family:var(--body);font-size:1rem;
+    color:var(--ink);background:var(--surface-2);border:1px solid var(--line);
+    border-radius:10px;padding:.8em .9em;
+    transition:border-color .15s ease,box-shadow .15s ease;}
+  .m-field textarea{resize:vertical;min-height:88px;line-height:1.5;}
+  .m-field input::placeholder,.m-field textarea::placeholder{color:var(--ink-faint);opacity:.75;}
+  .m-field input:focus,.m-field textarea:focus{outline:none;border-color:var(--brass);
     box-shadow:0 0 0 3px color-mix(in srgb,var(--brass) 22%,transparent);}
+  .m-field[hidden]{display:none;}
   .m-form .btn{width:100%;justify-content:center;margin-top:4px;}
   .m-form .btn[disabled]{opacity:.6;pointer-events:none;}
   .m-err:empty{display:none;}
@@ -328,7 +331,7 @@
     <div class="nav-right">
       <span class="coord">41.70°N&nbsp;&nbsp;71.42°W</span>
       <a class="btn btn-primary" href="tel:+14013174668" aria-label="Call Atlas Inc at (401) 317-4668"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg><span class="hdr-num">(401) 317-4668</span></a>
-      <a class="btn btn-ghost" href="#signup" data-signup>Email</a>
+      <a class="btn btn-ghost" href="#signup" data-contact>Email</a>
     </div>
   </div>
 </header>
@@ -597,9 +600,9 @@
   <div class="m-panel">
     <button class="m-x" type="button" data-close aria-label="Close">&times;</button>
     <div id="su-view">
-      <span class="eyebrow">Free two weeks</span>
+      <span class="eyebrow" id="su-eyebrow">Free two weeks</span>
       <h3 id="su-h">Start free &mdash; no card.</h3>
-      <p class="m-sub">Tell us where to reach you. Atlas takes it from there.</p>
+      <p class="m-sub" id="su-sub">Tell us where to reach you. Atlas takes it from there.</p>
       <form class="m-form" id="su-form" novalidate>
         <div class="m-field">
           <label for="su-biz">Business name</label>
@@ -611,10 +614,15 @@
           <input id="su-email" type="email" autocomplete="email"
                  placeholder="you@yourshop.com" required>
         </div>
+        <div class="m-field" id="su-comments-field" hidden>
+          <label for="su-comments">Comments</label>
+          <textarea id="su-comments" rows="4"
+                    placeholder="How can we help? Any questions or concerns…"></textarea>
+        </div>
         <p class="m-err" id="su-err" role="alert"></p>
         <button class="btn btn-primary" type="submit" id="su-go">Start my free two weeks</button>
       </form>
-      <p class="m-fine">No card &middot; cancel anytime &middot; or call (401) 317-4668</p>
+      <p class="m-fine" id="su-fine">No card &middot; cancel anytime &middot; or call (401) 317-4668</p>
     </div>
     <div class="m-done" id="su-done" hidden>
       <div class="m-tick">
@@ -624,9 +632,9 @@
         </svg>
       </div>
       <h3 tabindex="-1" id="su-donetitle">Check your email.</h3>
-      <p class="m-sub">Atlas is sending a note to <b id="su-where">your inbox</b> right
+      <p class="m-sub" id="su-donesub">Atlas is sending a note to <b id="su-where">your inbox</b> right
         now &mdash; it usually lands within a minute or two.</p>
-      <p class="m-fine">Nothing after 10 minutes? Call (401) 317-4668.</p>
+      <p class="m-fine">Prefer to talk? Call (401) 317-4668.</p>
     </div>
   </div>
 </div>
@@ -681,8 +689,11 @@
   els.forEach(function(e){io.observe(e);});
 })();
 (function(){
-  // Signup popup. Replaces the old mailto: links, which did nothing at all for a
-  // visitor with no default mail app registered.
+  // One popup, two modes. Replaces the old mailto: links (which did nothing for a
+  // visitor with no default mail app). 'signup' = start the free trial; 'contact' =
+  // message the team with questions/concerns (adds a comments field). Both POST to
+  // the same FormSubmit inbox; a marker in the message lets the backend tell them
+  // apart (a signup onboards; a contact just reaches Giorgio).
   var scrim=document.getElementById('signup');
   if(!scrim) return;
   var panel=scrim.querySelector('.m-panel'),
@@ -693,13 +704,60 @@
       go=document.getElementById('su-go'),
       biz=document.getElementById('su-biz'),
       mail=document.getElementById('su-email'),
-      where=document.getElementById('su-where'),
+      comments=document.getElementById('su-comments'),
+      commentsField=document.getElementById('su-comments-field'),
+      eyebrow=document.getElementById('su-eyebrow'),
+      h=document.getElementById('su-h'),
+      sub=document.getElementById('su-sub'),
+      fine=document.getElementById('su-fine'),
+      donetitle=document.getElementById('su-donetitle'),
+      donesub=document.getElementById('su-donesub'),
       reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches,
-      opener=null;
-  var GO_LABEL=go.textContent;
+      opener=null, mode='signup';
+  var EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  function esc(s){return String(s).replace(/[&<>"]/g,function(ch){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch];});}
 
-  function openFrom(el){
+  var MODES={
+    signup:{
+      eyebrow:'Free two weeks', title:'Start free — no card.',
+      sub:'Tell us where to reach you. Atlas takes it from there.',
+      comments:false, submit:'Start my free two weeks',
+      fine:'No card · cancel anytime · or call (401) 317-4668',
+      doneTitle:'Check your email.',
+      doneSub:function(m){return 'Atlas is sending a note to <b>'+esc(m)+
+        '</b> right now — it usually lands within a minute or two.';},
+      subject:function(b){return 'New signup — '+b;},
+      marker:function(b,m,c){return 'ATLAS-SIGNUP | Business: '+b+' | Email: '+m+
+        ' | Source: website popup';}
+    },
+    contact:{
+      eyebrow:'Get in touch', title:'Message our team.',
+      sub:'Any questions or concerns — send them our way and we’ll get right back to you.',
+      comments:true, submit:'Send message',
+      fine:'We usually reply within a day · or call (401) 317-4668',
+      doneTitle:'Message sent.',
+      doneSub:function(m){return 'Thanks — we’ve got your message and will '+
+        'reply to <b>'+esc(m)+'</b> soon.';},
+      subject:function(b){return 'New message — '+b;},
+      marker:function(b,m,c){return 'ATLAS-CONTACT | Business: '+b+' | Email: '+m+
+        ' | Comments: '+c+' | Source: website popup';}
+    }
+  };
+
+  function apply(mo){
+    mode=mo; var cfg=MODES[mo];
+    eyebrow.textContent=cfg.eyebrow;
+    h.textContent=cfg.title;
+    sub.textContent=cfg.sub;
+    commentsField.hidden=!cfg.comments;
+    go.textContent=cfg.submit;
+    fine.textContent=cfg.fine;
+  }
+
+  function openFrom(el,mo){
     opener=el||null;
+    apply(mo);
     scrim.hidden=false;
     if(!reduce&&el){
       // Offset from the panel's resting spot (the centred flex slot) back to the
@@ -724,21 +782,26 @@
       scrim.hidden=true;
       view.hidden=false;done.hidden=true;
       form.reset();err.textContent='';
-      go.disabled=false;go.textContent=GO_LABEL;
+      go.disabled=false;go.textContent=MODES[mode].submit;
       if(opener){try{opener.focus();}catch(e){}}
     },300);
   }
 
-  [].forEach.call(document.querySelectorAll('[data-signup]'),function(el){
-    el.addEventListener('click',function(e){e.preventDefault();openFrom(el);});
-  });
+  function wire(sel,mo){
+    [].forEach.call(document.querySelectorAll(sel),function(el){
+      el.addEventListener('click',function(e){e.preventDefault();openFrom(el,mo);});
+    });
+  }
+  wire('[data-signup]','signup');
+  wire('[data-contact]','contact');
+
   scrim.querySelector('[data-close]').addEventListener('click',close);
   scrim.addEventListener('click',function(e){if(e.target===scrim)close();});
   document.addEventListener('keydown',function(e){
     if(scrim.hidden) return;
     if(e.key==='Escape'||e.keyCode===27){close();return;}
     if(e.key!=='Tab'&&e.keyCode!==9) return;
-    var f=panel.querySelectorAll('button,input,[href]');
+    var f=panel.querySelectorAll('button,input,textarea,[href]');
     var vis=[].filter.call(f,function(x){return x.offsetParent!==null&&!x.disabled;});
     if(!vis.length) return;
     var first=vis[0],lastEl=vis[vis.length-1];
@@ -748,37 +811,35 @@
 
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    var b=biz.value.trim().replace(/\|/g,'/'),m=mail.value.trim();
+    var cfg=MODES[mode];
+    var b=biz.value.trim().replace(/\|/g,'/'), m=mail.value.trim(),
+        cRaw=comments.value.trim(),
+        c=cRaw.replace(/\|/g,'/').replace(/\s+/g,' ');   // keep the marker parseable
     if(!b){err.textContent='Please add your business name.';biz.focus();return;}
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m)){
-      err.textContent="That email doesn't look right.";mail.focus();return;}
+    if(!EMAIL_RE.test(m)){err.textContent="That email doesn't look right.";mail.focus();return;}
+    if(cfg.comments && !cRaw){err.textContent='Please add a short message.';comments.focus();return;}
     err.textContent='';
     go.disabled=true;go.textContent='Sending…';
+    var payload={
+      _subject:cfg.subject(b), _replyto:m, _template:'basic', _captcha:'false',
+      business:b, email:m, message:cfg.marker(b,m,c)
+    };
+    if(cfg.comments) payload.comments=cRaw;   // full text, for the inbox copy
     fetch('https://formsubmit.co/ajax/atlasinc.web@gmail.com',{
       method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({
-        _subject:'New signup — '+b,
-        _replyto:m,
-        _template:'basic',
-        _captcha:'false',
-        business:b,
-        email:m,
-        // Pipe-delimited marker that survives FormSubmit's HTML templating — the
-        // agency's intake parses this back out (inbound.unwrap_form_submission),
-        // because the forwarded mail arrives from FormSubmit, not from them.
-        message:'ATLAS-SIGNUP | Business: '+b+' | Email: '+m+' | Source: website popup'
-      })
+      body:JSON.stringify(payload)
     }).then(function(res){
       if(!res.ok) throw new Error('http '+res.status);
       return res.json();
     }).then(function(){
-      where.textContent=m;
+      donetitle.textContent=cfg.doneTitle;
+      donesub.innerHTML=cfg.doneSub(m);
       view.hidden=true;done.hidden=false;
-      try{document.getElementById('su-donetitle').focus();}catch(e){}
+      try{donetitle.focus();}catch(e){}
     })['catch'](function(){
       // Never dead-end them the way the old mailto: did — give a route that works.
-      go.disabled=false;go.textContent=GO_LABEL;
+      go.disabled=false;go.textContent=cfg.submit;
       err.innerHTML='Couldn\'t send that — please call <a href="tel:+14013174668" '+
         'style="border-bottom:1px solid var(--brass);">(401) 317-4668</a> '+
         'or email atlasinc.web@gmail.com.';
