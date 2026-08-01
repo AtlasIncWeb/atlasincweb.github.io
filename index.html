@@ -3,14 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Atlas Inc. — Local Marketing, Done For You</title>
+<title>Atlas Inc. — Local Marketing, Done For You · Warwick, Rhode Island</title>
+<meta name="description" content="Atlas Inc. builds and runs the website, the social posts, and the Google presence for local businesses in Warwick, Rhode Island. One flat price: $100 a month, two weeks free, no contract. Call (401) 317-4668.">
 <style>
   :root{
     --bg:#E8EDEB; --surface:#F3F6F4; --surface-2:#EDF1EF;
-    --ink:#0F2A38; --ink-soft:#43585F; --ink-faint:#6C7F84;
+    --ink:#0F2A38; --ink-soft:#43585F; --ink-faint:#55686D;
     --line:#CAD5D1; --line-soft:#DBE3DF;
     --brass:#B0742B; --brass-deep:#8F5D1E; --harbor:#1C4E63;
     --good:#2F7D5B;
+    --on-brass:#0B1A22;
     --display:"Palatino Linotype",Palatino,"Iowan Old Style","Book Antiqua",Georgia,serif;
     --body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --mono:ui-monospace,"SF Mono","Cascadia Code",Consolas,"Liberation Mono",monospace;
@@ -28,7 +30,7 @@
   }
   :root[data-theme="light"]{
     --bg:#E8EDEB; --surface:#F3F6F4; --surface-2:#EDF1EF;
-    --ink:#0F2A38; --ink-soft:#43585F; --ink-faint:#6C7F84;
+    --ink:#0F2A38; --ink-soft:#43585F; --ink-faint:#55686D;
     --line:#CAD5D1; --line-soft:#DBE3DF;
     --brass:#B0742B; --brass-deep:#8F5D1E; --harbor:#1C4E63; --good:#2F7D5B;
   }
@@ -40,12 +42,15 @@
   }
 
   *{box-sizing:border-box;}
-  html{-webkit-text-size-adjust:100%;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);
     line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   h1,h2,h3,p{margin:0;}
   a{color:inherit;text-decoration:none;}
+  a:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:3px;}
   img{max-width:100%;}
+  /* anchors clear the sticky header instead of landing underneath it */
+  [id]{scroll-margin-top:88px;}
 
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
   .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;
@@ -53,41 +58,45 @@
     align-items:center;gap:.6em;}
   .eyebrow::before{content:"";width:26px;height:1px;background:var(--brass);opacity:.7;}
   :root[data-theme="dark"] .eyebrow{color:var(--brass);}
-  @media (prefers-color-scheme:dark){.eyebrow{color:var(--brass);}}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .eyebrow{color:var(--brass);}}
 
-  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:var(--body);
-    font-weight:600;font-size:1rem;padding:.85em 1.5em;border-radius:999px;
-    border:1px solid transparent;cursor:pointer;transition:transform .15s ease,
-    box-shadow .15s ease,background .15s ease;line-height:1;}
-  .btn-primary{background:var(--brass);color:#12222b;box-shadow:0 1px 0 var(--brass-deep);}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 22px -10px var(--brass-deep);}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+    font-family:var(--body);font-weight:600;font-size:1rem;padding:.85em 1.5em;
+    border-radius:999px;border:1px solid transparent;cursor:pointer;
+    transition:background .15s ease,border-color .15s ease,color .15s ease;
+    line-height:1;min-height:46px;}
+  .btn-primary{background:var(--brass);color:var(--on-brass);}
+  .btn-primary:hover{background:color-mix(in srgb,var(--brass) 86%,#fff);}
   .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent;}
   .btn-ghost:hover{border-color:var(--brass);color:var(--brass-deep);}
   :root[data-theme="dark"] .btn-ghost:hover{color:var(--brass);}
-  @media (prefers-color-scheme:dark){.btn-ghost:hover{color:var(--brass);}}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn-ghost:hover{color:var(--brass);}}
   .btn:focus-visible{outline:2px solid var(--brass);outline-offset:3px;}
   .btn .ic{width:15px;height:15px;flex:0 0 auto;}
-  .nav .btn{padding:.6em 1.05em;font-size:.9rem;}
-  @media (max-width:560px){.hdr-num{display:none;}}
+  .nav .btn{padding:.6em 1.1em;font-size:.92rem;min-height:44px;}
+  @media (max-width:560px){.hdr-num{display:none;}.nav .btn{padding:.6em .9em;}}
 
   /* header */
   header.site{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);
-    background:color-mix(in srgb,var(--bg) 82%,transparent);
+    background:color-mix(in srgb,var(--bg) 88%,transparent);
     border-bottom:1px solid var(--line-soft);}
   .nav{display:flex;align-items:center;justify-content:space-between;
-    height:64px;gap:16px;}
+    height:68px;gap:16px;}
   .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);
-    font-weight:600;font-size:1.18rem;letter-spacing:.01em;}
+    font-weight:600;font-size:1.18rem;letter-spacing:.01em;line-height:1.15;}
+  .brand small{display:block;font-family:var(--mono);font-weight:400;font-size:.6rem;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-top:4px;}
   .mark{width:30px;height:30px;flex:0 0 auto;}
   .mark circle,.mark line,.mark path{stroke:var(--ink);}
   .mark .needle{stroke:var(--brass);}
-  .nav-right{display:flex;align-items:center;gap:18px;}
-  .coord{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;
-    color:var(--ink-faint);}
-  @media (max-width:640px){.coord{display:none;}}
+  .nav-right{display:flex;align-items:center;gap:26px;}
+  .nav-links{display:flex;align-items:center;gap:24px;font-size:.94rem;color:var(--ink-soft);}
+  .nav-links a{padding:4px 0;border-bottom:1px solid transparent;}
+  .nav-links a:hover{color:var(--ink);border-bottom-color:var(--brass);}
+  @media (max-width:880px){.nav-links{display:none;}}
 
   /* hero */
-  .hero{position:relative;padding:96px 0 84px;overflow:hidden;}
+  .hero{position:relative;padding:104px 0 88px;overflow:hidden;}
   .hero canvas{position:absolute;inset:0;width:100%;height:100%;
     opacity:.5;pointer-events:none;}
   @media (prefers-color-scheme:dark){.hero canvas{opacity:.32;}}
@@ -95,22 +104,44 @@
   :root[data-theme="light"] .hero canvas{opacity:.5;}
   .hero .wrap{position:relative;z-index:2;}
   .hero h1{font-family:var(--display);font-weight:600;
-    font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.02;letter-spacing:-.01em;
+    font-size:clamp(2.55rem,6.6vw,4.3rem);line-height:1.03;letter-spacing:-.015em;
     text-wrap:balance;margin:22px 0 0;max-width:16ch;}
-  .hero .lede{margin-top:22px;font-size:clamp(1.05rem,2.3vw,1.3rem);
-    color:var(--ink-soft);max-width:34ch;}
+  .hero .lede{margin-top:22px;font-size:clamp(1.05rem,2.3vw,1.28rem);
+    color:var(--ink-soft);max-width:36ch;}
   .hero .cta-row{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
-  .hero .fine{font-family:var(--mono);font-size:.74rem;color:var(--ink-faint);
-    letter-spacing:.03em;}
+  .fine{font-family:var(--mono);font-size:.74rem;color:var(--ink-faint);
+    letter-spacing:.03em;line-height:1.9;}
+  .hero .fine{margin-top:20px;max-width:46ch;}
+  /* inline-block so the fine-print links are a real thumb target on a phone */
+  .fine a{border-bottom:1px solid var(--brass);display:inline-block;padding:3px 0;}
 
-  section{padding:76px 0;}
+  section{padding:84px 0;}
   .sec-head{max-width:56ch;}
   .sec-head h2{font-family:var(--display);font-weight:600;
-    font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;margin-top:16px;
-    text-wrap:balance;}
-  .sec-head p{margin-top:16px;color:var(--ink-soft);font-size:1.08rem;}
+    font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.1;margin-top:16px;
+    letter-spacing:-.01em;text-wrap:balance;}
+  .sec-head p{margin-top:16px;color:var(--ink-soft);font-size:1.06rem;max-width:52ch;}
 
   .divider{height:1px;background:var(--line-soft);}
+
+  /* trust strip — three plain facts, nothing invented */
+  .strip{background:var(--surface);border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);}
+  .strip .row{display:grid;grid-template-columns:repeat(3,1fr);}
+  .strip .c{padding:30px 30px;}
+  .strip .c + .c{border-left:1px solid var(--line-soft);}
+  .strip .c:first-child{padding-left:0;}
+  .strip .c:last-child{padding-right:0;}
+  .strip b{display:block;font-family:var(--display);font-size:1.26rem;font-weight:600;
+    line-height:1.2;letter-spacing:-.01em;}
+  .strip small{display:block;margin-top:7px;color:var(--ink-soft);font-size:.95rem;
+    max-width:32ch;}
+  .strip a{border-bottom:1px solid var(--brass);display:inline-block;padding:2px 0;}
+  @media (max-width:720px){
+    .strip .row{grid-template-columns:1fr;}
+    .strip .c{padding:22px 0;}
+    .strip .c + .c{border-left:0;border-top:1px solid var(--line-soft);}
+  }
 
   /* positioning band */
   .band{background:var(--surface-2);border-top:1px solid var(--line-soft);
@@ -122,78 +153,100 @@
 
   /* services grid */
   .grid{display:grid;gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);
-    border-radius:var(--r);overflow:hidden;margin-top:40px;
+    border-radius:var(--r);overflow:hidden;margin-top:44px;
     grid-template-columns:repeat(3,1fr);}
   @media (max-width:820px){.grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:520px){.grid{grid-template-columns:1fr;}}
-  .cell{background:var(--surface);padding:28px 26px;}
+  .cell{background:var(--surface);padding:30px 28px;}
   .cell .n{font-family:var(--mono);font-size:.72rem;color:var(--brass-deep);
     letter-spacing:.1em;}
   :root[data-theme="dark"] .cell .n{color:var(--brass);}
-  @media (prefers-color-scheme:dark){.cell .n{color:var(--brass);}}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cell .n{color:var(--brass);}}
   .cell h3{font-family:var(--display);font-size:1.22rem;font-weight:600;margin:14px 0 8px;}
-  .cell p{color:var(--ink-soft);font-size:.98rem;}
+  .cell p{color:var(--ink-soft);font-size:.98rem;max-width:36ch;}
 
   /* steps */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px;}
-  @media (max-width:760px){.steps{grid-template-columns:1fr;gap:20px;}}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:48px;}
+  @media (max-width:760px){.steps{grid-template-columns:1fr;gap:26px;}}
   .step{position:relative;padding-top:26px;border-top:2px solid var(--ink);}
   .step .num{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;
     color:var(--brass-deep);}
   :root[data-theme="dark"] .step .num{color:var(--brass);}
-  @media (prefers-color-scheme:dark){.step .num{color:var(--brass);}}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .step .num{color:var(--brass);}}
   .step h3{font-family:var(--display);font-size:1.35rem;font-weight:600;margin:12px 0 10px;}
-  .step p{color:var(--ink-soft);}
+  .step p{color:var(--ink-soft);max-width:40ch;}
 
   /* pricing */
   .price-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:0;margin-top:44px;
     border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface);}
   @media (max-width:760px){.price-wrap{grid-template-columns:1fr;}}
   .price-main{padding:38px 34px;}
+  /* This panel is dark in BOTH themes, so it carries the light-on-dark brass
+     regardless of theme — light-theme brass (#B0742B) fails contrast on navy. */
   .price-side{padding:38px 34px;background:var(--ink);color:#EAF0ED;
-    display:flex;flex-direction:column;justify-content:space-between;gap:26px;}
+    --brass:#D8A055;
+    display:flex;flex-direction:column;justify-content:space-between;gap:30px;}
   :root[data-theme="dark"] .price-side{background:#081820;}
-  @media (prefers-color-scheme:dark){.price-side{background:#081820;}}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .price-side{background:#081820;}}
   .price-tag{display:flex;align-items:baseline;gap:8px;}
-  .price-tag .amt{font-family:var(--display);font-size:3.2rem;font-weight:600;line-height:1;}
-  .price-tag .per{color:#9FB4B4;font-family:var(--mono);font-size:.85rem;}
+  .price-tag .amt{font-family:var(--display);font-size:3.2rem;font-weight:600;line-height:1;
+    letter-spacing:-.02em;}
+  .price-tag .per{color:var(--ink-soft);font-family:var(--mono);font-size:.85rem;}
+  .price-note{margin-top:12px;color:var(--ink-soft);font-size:1rem;max-width:40ch;}
   .incl{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:13px;}
   .incl li{display:flex;gap:12px;align-items:flex-start;font-size:1rem;color:var(--ink-soft);}
   .incl svg{flex:0 0 auto;margin-top:3px;}
   .incl b{color:var(--ink);font-weight:600;}
   .side-line{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;
     text-transform:uppercase;color:var(--brass);}
-  .side-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:11px;font-size:.98rem;color:#C9D6D3;}
+  .side-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px;
+    font-size:.98rem;color:#C9D6D3;}
   .side-list li{display:flex;gap:10px;align-items:flex-start;}
   .side-list .dot{color:var(--brass);}
-  .btn-lg{font-size:1.12rem;padding:1.05em 2.15em;}
-  .price-banner{margin-top:34px;padding:26px 30px;border-radius:14px;
-    background:var(--ink);color:#EAF0ED;display:flex;flex-wrap:wrap;
-    align-items:center;justify-content:space-between;gap:22px;
-    box-shadow:0 20px 44px -26px rgba(8,20,26,.55);}
+  .side-list b{color:#fff;font-weight:600;}
+  .side-copy{margin-top:12px;color:#C9D6D3;font-size:.98rem;}
+  .side-copy b{color:var(--brass);}
+  .ladder{margin-top:16px;display:grid;gap:8px;font-variant-numeric:tabular-nums;}
+  .lad{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+    padding:10px 13px;border:1px solid rgba(255,255,255,.14);border-radius:8px;}
+  .lad .l{color:#C9D6D3;font-size:.92rem;}
+  .lad .v{color:#fff;font-weight:700;font-size:1.05rem;}
+  .lad .v small{font-weight:400;font-size:.8rem;color:#9FB4B4;}
+  .lad.base .l,.lad.base .v{color:#9FB4B4;font-weight:600;}
+  .lad.free{border-color:var(--brass);background:rgba(255,255,255,.05);}
+  .lad.free .l{color:#fff;font-weight:600;}
+  .lad.free .v{color:var(--brass);font-weight:800;}
+  .lad.free .v small{color:var(--brass);}
+  .side-fine{margin-top:11px;color:#9FB4B4;font-size:.86rem;}
+  .btn-lg{font-size:1.1rem;padding:1.05em 2.1em;min-height:54px;}
+  .price-banner{margin-top:36px;padding:30px 34px;border-radius:var(--r);
+    background:var(--ink);color:#EAF0ED;--brass:#D8A055;display:flex;flex-wrap:wrap;
+    align-items:center;justify-content:space-between;gap:22px;}
   :root[data-theme="dark"] .price-banner{background:#081820;}
-  @media (prefers-color-scheme:dark){.price-banner{background:#081820;}}
-  .pb-title{font-family:var(--display);font-weight:600;font-size:clamp(1.35rem,3vw,1.7rem);line-height:1.15;}
-  .pb-sub{margin-top:7px;color:#9FB4B4;font-size:1rem;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .price-banner{background:#081820;}}
+  .pb-title{font-family:var(--display);font-weight:600;
+    font-size:clamp(1.35rem,3vw,1.7rem);line-height:1.15;}
+  .pb-sub{margin-top:8px;color:#9FB4B4;font-size:1rem;}
   .pb-actions{display:flex;flex-wrap:wrap;gap:12px;}
   .price-banner .btn-ghost{border-color:rgba(255,255,255,.32);color:#EAF0ED;}
   .price-banner .btn-ghost:hover{border-color:var(--brass);color:var(--brass);}
 
-  /* work samples — premium branded post cards */
+  /* work samples — branded post cards */
   .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;}
   @media (max-width:860px){.posts{grid-template-columns:repeat(2,1fr);}}
-  @media (max-width:560px){.posts{grid-template-columns:1fr;max-width:400px;margin:44px auto 0;}}
+  @media (max-width:560px){.posts{grid-template-columns:1fr;max-width:400px;margin:40px auto 0;}}
   .post{border-radius:18px;overflow:hidden;background:var(--surface);
-    border:1px solid var(--line-soft);box-shadow:0 20px 44px -26px rgba(8,20,26,.55);
-    display:flex;flex-direction:column;}
-  :root[data-theme="dark"] .post{box-shadow:0 20px 48px -24px rgba(0,0,0,.72);}
+    border:1px solid var(--line-soft);display:flex;flex-direction:column;}
   .post .top{display:flex;align-items:center;gap:11px;padding:13px 15px;}
   .post .avatar{width:36px;height:36px;border-radius:50%;flex:0 0 auto;color:#fff;
     display:flex;align-items:center;justify-content:center;font-family:var(--display);
-    font-weight:600;font-size:1rem;box-shadow:inset 0 0 0 2px rgba(255,255,255,.22);}
+    font-weight:600;font-size:1rem;box-shadow:inset 0 0 0 2px rgba(255,255,255,.22);
+    text-shadow:0 1px 2px rgba(0,0,0,.45);}
   .post .handle{font-size:.86rem;font-weight:600;line-height:1.15;}
   .post .handle span{display:block;font-weight:400;color:var(--ink-faint);font-size:.72rem;margin-top:2px;}
-  .post .dots{margin-left:auto;color:var(--ink-faint);letter-spacing:.06em;font-size:1.1rem;}
+  .post .tag{margin-left:auto;font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line);
+    border-radius:100px;padding:4px 9px;line-height:1;}
   .post .art{aspect-ratio:4/5;position:relative;overflow:hidden;padding:24px;
     display:flex;flex-direction:column;justify-content:flex-end;color:#F6F1E8;}
   .post .art .grain{position:absolute;inset:0;pointer-events:none;opacity:.42;
@@ -203,13 +256,13 @@
     background:radial-gradient(125% 95% at 50% 25%,transparent 44%,rgba(0,0,0,.5));}
   .post .art .mark{position:absolute;top:20px;left:24px;font-family:var(--mono);
     font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;opacity:.9;
-    display:flex;align-items:center;gap:8px;z-index:2;}
+    display:flex;align-items:center;gap:8px;z-index:2;width:auto;height:auto;}
   .post .art .mark::before{content:"";width:20px;height:1px;background:currentColor;opacity:.6;}
   .post .art .body{position:relative;z-index:2;}
   .post .art .kicker{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;
     text-transform:uppercase;opacity:.85;margin-bottom:13px;}
   .post .art h4{font-family:var(--display);font-weight:600;line-height:1.08;
-    font-size:1.6rem;text-wrap:balance;}
+    font-size:1.6rem;text-wrap:balance;margin:0;}
   .post .art .sign{margin-top:15px;font-size:.8rem;opacity:.82;font-style:italic;}
   .art.heritage{background:radial-gradient(85% 70% at 26% 16%,#6a4127 0%,transparent 56%),linear-gradient(158deg,#2c1b12,#120c08);}
   .art.editorial{background:radial-gradient(80% 62% at 76% 14%,#f6ddcb 0%,transparent 56%),linear-gradient(160deg,#ece0d5,#d6c1b0);color:#2c1d14;}
@@ -220,42 +273,68 @@
   .post .actions .bm{margin-left:auto;}
   .post .cap{padding:6px 15px 17px;font-size:.85rem;color:var(--ink-soft);line-height:1.5;}
   .post .cap b{color:var(--ink);font-weight:600;}
-  .samples-note{margin-top:24px;font-family:var(--mono);font-size:.76rem;
-    color:var(--ink-faint);letter-spacing:.02em;max-width:62ch;}
 
-  /* pilot */
-  .pilot{background:var(--surface-2);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
-  .pilot .row{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;}
-  @media (max-width:760px){.pilot .row{grid-template-columns:1fr;gap:24px;}}
-  .pilot h2{font-family:var(--display);font-weight:600;font-size:clamp(1.7rem,3.6vw,2.3rem);
-    line-height:1.12;text-wrap:balance;}
-  .pilot p{margin-top:16px;color:var(--ink-soft);font-size:1.06rem;}
-  .pilot ul{list-style:none;margin:0;padding:0;display:grid;gap:16px;}
-  .pilot ul li{display:flex;gap:13px;align-items:flex-start;}
-  .pilot ul .k{font-family:var(--mono);color:var(--brass-deep);font-size:.8rem;
-    letter-spacing:.08em;padding-top:3px;flex:0 0 auto;}
-  :root[data-theme="dark"] .pilot ul .k{color:var(--brass);}
-  @media (prefers-color-scheme:dark){.pilot ul .k{color:var(--brass);}}
-  .pilot ul b{font-family:var(--display);font-size:1.08rem;}
+  /* questions */
+  .faq{background:var(--surface-2);border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);}
+  .qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px 48px;margin-top:48px;}
+  @media (max-width:760px){.qa-grid{grid-template-columns:1fr;gap:26px;}}
+  .qa{border-top:1px solid var(--line);padding-top:18px;}
+  .qa h3{font-family:var(--display);font-weight:600;font-size:1.16rem;line-height:1.3;
+    letter-spacing:-.005em;}
+  .qa p{margin-top:9px;color:var(--ink-soft);font-size:1rem;max-width:46ch;}
+  .nots{margin-top:56px;border:1px solid var(--line);border-radius:var(--r);
+    background:var(--surface);padding:34px 34px 32px;}
+  @media (max-width:520px){.nots{padding:26px 22px;}}
+  .nots h3{font-family:var(--display);font-weight:600;font-size:1.35rem;line-height:1.2;}
+  .nots ul{list-style:none;margin:20px 0 0;padding:0;display:grid;
+    grid-template-columns:1fr 1fr;gap:13px 36px;}
+  @media (max-width:700px){.nots ul{grid-template-columns:1fr;}}
+  .nots li{display:flex;gap:11px;align-items:flex-start;color:var(--ink-soft);font-size:1rem;}
+  .nots li::before{content:"—";color:var(--brass-deep);font-family:var(--mono);
+    flex:0 0 auto;line-height:1.5;}
+  :root[data-theme="dark"] .nots li::before{color:var(--brass);}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .nots li::before{color:var(--brass);}}
+  .nots .close{margin-top:22px;padding-top:20px;border-top:1px solid var(--line-soft);
+    font-family:var(--display);font-size:1.08rem;line-height:1.45;max-width:56ch;}
+  .ask{margin-top:44px;display:flex;flex-wrap:wrap;align-items:center;gap:14px;}
+  .ask .lbl{font-family:var(--display);font-size:1.15rem;margin-right:6px;}
 
   /* final cta */
-  .final{text-align:center;padding:104px 0;}
+  .final{text-align:center;padding:108px 0;}
   .final h2{font-family:var(--display);font-weight:600;
-    font-size:clamp(2.1rem,5.2vw,3.4rem);line-height:1.06;text-wrap:balance;
-    max-width:18ch;margin:16px auto 0;}
+    font-size:clamp(2.1rem,5.2vw,3.4rem);line-height:1.06;letter-spacing:-.015em;
+    text-wrap:balance;max-width:18ch;margin:16px auto 0;}
   .final p{margin:20px auto 0;color:var(--ink-soft);max-width:44ch;font-size:1.1rem;}
   .final .cta-row{margin-top:34px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
-  .final .mail{margin-top:22px;font-family:var(--mono);font-size:.9rem;color:var(--ink-soft);}
+  .final .mail{margin-top:24px;}
   .final .mail a{border-bottom:1px solid var(--brass);padding-bottom:1px;}
 
-  footer{border-top:1px solid var(--line-soft);padding:40px 0 56px;}
-  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center;}
-  .foot .fbrand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;}
-  .foot .meta{font-family:var(--mono);font-size:.74rem;color:var(--ink-faint);
-    letter-spacing:.04em;text-align:right;line-height:1.8;}
+  footer{border-top:1px solid var(--line-soft);padding:52px 0 60px;}
+  .foot{display:grid;grid-template-columns:1.3fr .8fr 1fr;gap:36px;align-items:start;}
+  @media (max-width:760px){.foot{grid-template-columns:1fr;gap:30px;}}
+  .foot .fbrand{display:flex;align-items:center;gap:10px;font-family:var(--display);
+    font-weight:600;font-size:1.1rem;}
+  .foot .ftag{margin-top:14px;color:var(--ink-soft);font-size:.96rem;max-width:34ch;}
+  .flinks{display:grid;gap:10px;font-size:.96rem;color:var(--ink-soft);}
+  .flinks a{width:fit-content;border-bottom:1px solid transparent;}
+  .flinks a:hover{color:var(--ink);border-bottom-color:var(--brass);}
+  .foot .meta{margin-top:18px;font-family:var(--mono);font-size:.74rem;
+    color:var(--ink-faint);letter-spacing:.04em;line-height:2;}
+  .foot .meta a{border-bottom:1px solid var(--brass);display:inline-block;padding:2px 0;}
 
-  .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease;}
-  .reveal.in{opacity:1;transform:none;}
+  @media (max-width:760px){
+    section{padding:58px 0;}
+    .hero{padding:64px 0 58px;}
+    .final{padding:76px 0;}
+    .grid,.posts,.qa-grid,.price-wrap{margin-top:34px;}
+    .nots{margin-top:40px;}
+  }
+
+  .reveal{opacity:1;}
+  .js .reveal{opacity:0;transform:translateY(16px);
+    transition:opacity .7s ease,transform .7s ease;}
+  .js .reveal.in{opacity:1;transform:none;}
 
   /* signup popup */
   .m-scrim{position:fixed;inset:0;z-index:50;display:flex;align-items:center;
@@ -268,6 +347,7 @@
   .m-panel{position:relative;width:100%;max-width:430px;background:var(--surface);
     border:1px solid var(--line);border-radius:var(--r);padding:34px 32px 30px;
     box-shadow:0 30px 70px -20px rgba(4,20,28,.5);opacity:0;
+    max-height:calc(100vh - 40px);overflow-y:auto;
     transform:translate(var(--dx,0),var(--dy,0)) scale(.24);
     transition:transform .44s cubic-bezier(.2,.9,.28,1),opacity .3s ease;}
   .m-scrim.in .m-panel{transform:translate(0,0) scale(1);opacity:1;}
@@ -297,7 +377,7 @@
   .m-err:empty{display:none;}
   .m-err{font-size:.86rem;color:#b02a1c;}
   :root[data-theme="dark"] .m-err{color:#ff9083;}
-  @media (prefers-color-scheme:dark){.m-err{color:#ff9083;}}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .m-err{color:#ff9083;}}
   .m-fine{margin-top:14px;font-family:var(--mono);font-size:.68rem;
     letter-spacing:.04em;color:var(--ink-faint);text-align:center;}
   .m-done{text-align:center;padding:6px 0 2px;}
@@ -309,14 +389,15 @@
   @media (max-width:420px){.m-panel{padding:30px 22px 26px;}}
 
   @media (prefers-reduced-motion:reduce){
-    .reveal{opacity:1;transform:none;transition:none;}
-    .btn:hover{transform:none;}
+    html{scroll-behavior:auto;}
+    .reveal,.js .reveal{opacity:1;transform:none;transition:none;}
     .m-panel,.m-scrim.in .m-panel{transform:none;}
     .m-panel{transition:opacity .2s ease;}
   }
 </style>
 </head>
 <body>
+<script>document.documentElement.className+=" js";</script>
 <header class="site">
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="Atlas Inc. home">
@@ -326,12 +407,15 @@
         <path class="needle" d="M16 5 L19 16 L16 27 L13 16 Z" stroke-width="1.2" fill="none"/>
         <line x1="16" y1="2.5" x2="16" y2="6" stroke-width="1.4"/>
       </svg>
-      Atlas Inc.
+      <span>Atlas Inc.<small>Warwick, Rhode Island</small></span>
     </a>
     <div class="nav-right">
-      <span class="coord">41.70°N&nbsp;&nbsp;71.42°W</span>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#included">What&rsquo;s included</a>
+        <a href="#work">The work</a>
+        <a href="#faq">Questions</a>
+      </nav>
       <a class="btn btn-primary" href="tel:+14013174668" aria-label="Call Atlas Inc at (401) 317-4668"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg><span class="hdr-num">(401) 317-4668</span></a>
-      <a class="btn btn-ghost" href="#signup" data-contact>Email</a>
     </div>
   </div>
 </header>
@@ -340,16 +424,35 @@
   <section class="hero">
     <canvas id="chart" aria-hidden="true"></canvas>
     <div class="wrap">
-      <span class="eyebrow">Local marketing, done for you</span>
+      <span class="eyebrow">Warwick, Rhode Island</span>
       <h1>Put your business on the map.</h1>
-      <p class="lede">Atlas runs the website, the posts, and the Google presence for local shops and studios &mdash; so you can run the business.</p>
+      <p class="lede">Atlas builds and runs the website, the posts, and the Google presence for local shops and studios &mdash; so you can get back to running the business.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://buy.stripe.com/bJe3cv4Vx7tf5Jc7sN48006">Start now</a>
-        <a class="btn btn-ghost" href="#included">See what's included</a>
+        <a class="btn btn-primary" href="https://buy.stripe.com/bJe3cv4Vx7tf5Jc7sN48006">Start the free two weeks</a>
+        <a class="btn btn-ghost" href="#included">See what&rsquo;s included</a>
       </div>
-      <p class="fine" style="margin-top:18px;">Two weeks free, then $100/mo &middot; cancel anytime &middot; <a href="#signup" data-signup style="border-bottom:1px solid var(--brass);">or start free with no card</a></p>
+      <p class="fine">Two weeks free, then $100/month &middot; cancel any month &middot; <a href="#signup" data-signup>or start with no card at all</a></p>
     </div>
   </section>
+
+  <div class="strip">
+    <div class="wrap">
+      <div class="row">
+        <div class="c">
+          <b>$100 a month</b>
+          <small>One price, everything in it. No setup fee, no add-ons, no second tier.</small>
+        </div>
+        <div class="c">
+          <b>Two weeks free</b>
+          <small>The site goes up and the posts start before you pay anything.</small>
+        </div>
+        <div class="c">
+          <b>Warwick, Rhode Island</b>
+          <small>Call <a href="tel:+14013174668">(401) 317-4668</a> and you get the person who does the work.</small>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section class="band">
     <div class="wrap reveal">
@@ -359,12 +462,12 @@
     </div>
   </section>
 
-  <section>
+  <section id="services">
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="eyebrow">What we handle</span>
         <h2>Everything that makes you look established &mdash; without you lifting a finger.</h2>
-        <p>One flat price covers the work most owners never find time for. You approve, we run it.</p>
+        <p>One flat price covers the work most owners never find time for. You see it before it goes out; we run the rest.</p>
       </div>
       <div class="grid reveal">
         <div class="cell">
@@ -375,12 +478,12 @@
         <div class="cell">
           <div class="n">B</div>
           <h3>Social, done for you</h3>
-          <p>Consistent, branded posts on Instagram and Facebook in your colors and voice. You never open the app.</p>
+          <p>Branded posts on Instagram and Facebook &mdash; four or five a week, in your colors and your voice. You never open the app.</p>
         </div>
         <div class="cell">
           <div class="n">C</div>
           <h3>Google presence</h3>
-          <p>Your Google Business profile kept fresh and active, so you turn up when locals search what you do.</p>
+          <p>Your Google Business profile kept current and posted to, so you turn up when locals search what you do.</p>
         </div>
         <div class="cell">
           <div class="n">D</div>
@@ -401,32 +504,30 @@
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <section>
+  <section class="band">
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="eyebrow">How it works</span>
-        <h2>Three steps. The first one takes you a minute.</h2>
+        <h2>Three steps. The first one takes you five minutes.</h2>
       </div>
       <div class="steps reveal">
         <div class="step">
           <div class="num">STEP 01</div>
-          <h3>You email us</h3>
-          <p>Tell us the business and roughly what you do. That&rsquo;s the whole ask on your end &mdash; one email.</p>
+          <h3>You tell us the business</h3>
+          <p>One email or one phone call: what you do, who you serve, and anything you&rsquo;d never want said in your name. That&rsquo;s the whole ask on your end.</p>
         </div>
         <div class="step">
           <div class="num">STEP 02</div>
-          <h3>We build &amp; run it</h3>
-          <p>We stand up your site, set your brand look, and start posting &mdash; free, for two weeks. You just glance and approve.</p>
+          <h3>We build it and run it</h3>
+          <p>Inside the two free weeks your site goes up, your brand look gets set, and the posts start. You see the content before it publishes &mdash; and we confirm each post actually went live.</p>
         </div>
         <div class="step">
           <div class="num">STEP 03</div>
-          <h3>You keep it or walk</h3>
-          <p>Love it? It&rsquo;s $100/month, all in. Don&rsquo;t? Walk away, no card, no hard feelings. That&rsquo;s the deal.</p>
+          <h3>You decide</h3>
+          <p>Stay, and it&rsquo;s $100 a month, all in. Don&rsquo;t, and that&rsquo;s a fair answer &mdash; no contract, no cancellation fee, no hard feelings.</p>
         </div>
       </div>
-      <div class="reveal" style="margin-top:40px;display:flex;justify-content:center;">
+      <div class="reveal" style="margin-top:44px;display:flex;justify-content:center;">
         <a class="btn btn-ghost btn-lg" href="tel:+14013174668"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>Prefer to talk? Call (401) 317-4668</a>
       </div>
     </div>
@@ -437,6 +538,7 @@
       <div class="sec-head reveal">
         <span class="eyebrow">One price, everything</span>
         <h2>No packages to decode. No upsells. One number.</h2>
+        <p>Everything below is included at $100 a month. There is no bigger plan to graduate to, because there isn&rsquo;t a smaller one.</p>
       </div>
       <div class="price-wrap reveal">
         <div class="price-main">
@@ -444,48 +546,55 @@
             <span class="amt">$100</span>
             <span class="per">/ month &middot; all in</span>
           </div>
+          <p class="price-note">Billed monthly, starting after your two free weeks.</p>
           <ul class="incl">
-            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="var(--brass)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>A professional website</b>, built and hosted for you.</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="var(--brass)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>~20 branded posts a month</b> across Instagram &amp; Facebook.</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="var(--brass)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Google Business</b> kept fresh and found.</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="var(--brass)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>All content created &amp; scheduled</b> &mdash; you never post.</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="var(--brass)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>A monthly recap</b>, in plain English.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-8" stroke="var(--brass)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>A professional website</b>, built and hosted for you.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-8" stroke="var(--brass)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>About 20 branded posts a month</b> &mdash; four or five a week across Instagram &amp; Facebook.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-8" stroke="var(--brass)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Google Business</b> kept current and posted to.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-8" stroke="var(--brass)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>All content created &amp; scheduled</b> &mdash; you never post.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-8" stroke="var(--brass)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Your eyes on it first</b> &mdash; nothing publishes that you haven&rsquo;t seen.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-8" stroke="var(--brass)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>A monthly recap</b>, in plain English.</span></li>
           </ul>
         </div>
         <div class="price-side">
           <div>
             <div class="side-line">The honest part</div>
             <ul class="side-list">
-              <li><span class="dot">&rarr;</span><span>First two weeks are <b style="color:#fff;font-weight:600;">free</b>. We build it before you pay a cent.</span></li>
-              <li><span class="dot">&rarr;</span><span>No contract. Cancel any month.</span></li>
-              <li><span class="dot">&rarr;</span><span>We never ask for your passwords to start.</span></li>
+              <li><span class="dot" aria-hidden="true">&rarr;</span><span>The first two weeks are <b>free</b>. We build it before you pay a cent.</span></li>
+              <li><span class="dot" aria-hidden="true">&rarr;</span><span>No contract. Cancel any month &mdash; no notice period, no cancellation fee.</span></li>
+              <li><span class="dot" aria-hidden="true">&rarr;</span><span>We don&rsquo;t need your passwords, and you can pull our posting access any time.</span></li>
+              <li><span class="dot" aria-hidden="true">&rarr;</span><span>Nothing goes out in your name that you haven&rsquo;t approved.</span></li>
             </ul>
           </div>
           <div>
             <div class="side-line">Send a friend</div>
-            <p style="margin-top:12px;color:#C9D6D3;font-size:.98rem;">Refer another local owner and <b style="color:var(--brass);">$50 comes off your bill</b> every month, for as long as they stay. It stacks.</p>
-            <div style="margin-top:14px;display:grid;gap:8px;">
-              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:9px 12px;border:1px solid rgba(255,255,255,.14);border-radius:8px;">
-                <span style="color:#C9D6D3;font-size:.92rem;">One referral</span>
-                <span style="color:#fff;font-weight:700;font-size:1.05rem;">$50<span style="font-weight:400;font-size:.82rem;color:#C9D6D3;">/mo</span></span>
+            <p class="side-copy">Refer another local owner and <b>$50 comes off your bill</b> every month, for as long as they stay. It stacks.</p>
+            <div class="ladder">
+              <div class="lad base">
+                <span class="l">Just you</span>
+                <span class="v">$100<small>/mo</small></span>
               </div>
-              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:9px 12px;border:1px solid var(--brass);border-radius:8px;background:rgba(255,255,255,.05);">
-                <span style="color:#fff;font-size:.92rem;font-weight:600;">Two referrals</span>
-                <span style="color:var(--brass);font-weight:800;font-size:1.05rem;">$0<span style="font-weight:400;font-size:.82rem;">/mo</span></span>
+              <div class="lad">
+                <span class="l">One referral</span>
+                <span class="v">$50<small>/mo</small></span>
+              </div>
+              <div class="lad free">
+                <span class="l">Two referrals</span>
+                <span class="v">$0<small>/mo</small></span>
               </div>
             </div>
-            <p style="margin-top:10px;color:#8FA3A0;font-size:.86rem;">Two people you&rsquo;d have recommended anyway, and you stop paying.</p>
+            <p class="side-fine">Two people you&rsquo;d have recommended anyway, and you stop paying.</p>
           </div>
         </div>
       </div>
       <div class="price-banner reveal">
         <div class="pb-copy">
           <div class="pb-title">Ready to put your business on the map?</div>
-          <div class="pb-sub">Two weeks free, then $100/month &mdash; cancel anytime, no contract.</div>
+          <div class="pb-sub">Two weeks free, then $100/month &mdash; cancel any month, no contract.</div>
         </div>
         <div class="pb-actions">
-          <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/bJe3cv4Vx7tf5Jc7sN48006">Start now</a>
-          <a class="btn btn-ghost" href="#signup" data-signup>Start free, no card</a>
+          <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/bJe3cv4Vx7tf5Jc7sN48006">Start the free two weeks</a>
+          <a class="btn btn-ghost" href="#signup" data-signup>Start with no card</a>
         </div>
       </div>
     </div>
@@ -493,19 +602,19 @@
 
   <div class="divider"></div>
 
-  <section>
+  <section id="work">
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="eyebrow">A taste of the work</span>
         <h2>What your feed could look like.</h2>
-        <p>Awareness-first, built to make you look established &mdash; never a wall of discounts.</p>
+        <p>These three are sample concepts we designed to show the style &mdash; the businesses aren&rsquo;t real and we don&rsquo;t pretend otherwise. Yours get built around your brand, your colors, and your own photos.</p>
       </div>
       <div class="posts reveal">
         <div class="post">
           <div class="top">
-            <div class="avatar" style="background:linear-gradient(135deg,#8a542f,#3a2113);">H</div>
+            <div class="avatar" style="background:linear-gradient(135deg,#8a542f,#3a2113);" aria-hidden="true">H</div>
             <div class="handle">Harbor &amp; Vine<span>Restaurant &middot; Warwick, RI</span></div>
-            <div class="dots">&middot;&middot;&middot;</div>
+            <div class="tag">Sample</div>
           </div>
           <div class="art heritage">
             <div class="grain"></div><div class="vig"></div>
@@ -516,19 +625,19 @@
               <div class="sign">the family behind the bar</div>
             </div>
           </div>
-          <div class="actions">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.4 3.5 9.2 3.5 6.6 5.6 4.9 7.9 4.9c1.7 0 3.2 1 3.9 2.4C12.5 5.9 14 4.9 15.8 4.9c2.3 0 4.4 1.7 4.4 4.3 0 6.2-8.2 11.3-8.2 11.3Z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.4c0 3.9-3.8 7-8.5 7-1 0-2-.1-2.9-.4L4 19.5l1.5-3.6C4.6 14.6 4 13.1 4 11.4c0-3.8 3.8-7 8.5-7s8 3.2 8 7Z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6.6 2.4L12 20l4-7 5-9Z"/><path d="M9.6 13.4 21 4"/></svg>
-            <svg class="bm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4h11v16l-5.5-4-5.5 4Z"/></svg>
+          <div class="actions" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 20.5C12 20.5 3.5 15.4 3.5 9.2 3.5 6.6 5.6 4.9 7.9 4.9c1.7 0 3.2 1 3.9 2.4C12.5 5.9 14 4.9 15.8 4.9c2.3 0 4.4 1.7 4.4 4.3 0 6.2-8.2 11.3-8.2 11.3Z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M20.5 11.4c0 3.9-3.8 7-8.5 7-1 0-2-.1-2.9-.4L4 19.5l1.5-3.6C4.6 14.6 4 13.1 4 11.4c0-3.8 3.8-7 8.5-7s8 3.2 8 7Z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M21 4 3 11l6.6 2.4L12 20l4-7 5-9Z"/><path d="M9.6 13.4 21 4"/></svg>
+            <svg class="bm" viewBox="0 0 24 24"><path d="M6.5 4h11v16l-5.5-4-5.5 4Z"/></svg>
           </div>
-          <div class="cap"><b>Twenty-six years on this block.</b> A little about the room you keep coming back to.</div>
+          <div class="cap"><b>Twenty-eight years on this block.</b> A little about the room you keep coming back to.</div>
         </div>
         <div class="post">
           <div class="top">
-            <div class="avatar" style="background:linear-gradient(135deg,#c98b6a,#7c4a33);">C</div>
+            <div class="avatar" style="background:linear-gradient(135deg,#c98b6a,#7c4a33);" aria-hidden="true">C</div>
             <div class="handle">Cedar &amp; Clay<span>Salon &middot; Warwick, RI</span></div>
-            <div class="dots">&middot;&middot;&middot;</div>
+            <div class="tag">Sample</div>
           </div>
           <div class="art editorial">
             <div class="grain"></div><div class="vig"></div>
@@ -539,19 +648,19 @@
               <div class="sign">little habits, big difference</div>
             </div>
           </div>
-          <div class="actions">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.4 3.5 9.2 3.5 6.6 5.6 4.9 7.9 4.9c1.7 0 3.2 1 3.9 2.4C12.5 5.9 14 4.9 15.8 4.9c2.3 0 4.4 1.7 4.4 4.3 0 6.2-8.2 11.3-8.2 11.3Z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.4c0 3.9-3.8 7-8.5 7-1 0-2-.1-2.9-.4L4 19.5l1.5-3.6C4.6 14.6 4 13.1 4 11.4c0-3.8 3.8-7 8.5-7s8 3.2 8 7Z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6.6 2.4L12 20l4-7 5-9Z"/><path d="M9.6 13.4 21 4"/></svg>
-            <svg class="bm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4h11v16l-5.5-4-5.5 4Z"/></svg>
+          <div class="actions" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 20.5C12 20.5 3.5 15.4 3.5 9.2 3.5 6.6 5.6 4.9 7.9 4.9c1.7 0 3.2 1 3.9 2.4C12.5 5.9 14 4.9 15.8 4.9c2.3 0 4.4 1.7 4.4 4.3 0 6.2-8.2 11.3-8.2 11.3Z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M20.5 11.4c0 3.9-3.8 7-8.5 7-1 0-2-.1-2.9-.4L4 19.5l1.5-3.6C4.6 14.6 4 13.1 4 11.4c0-3.8 3.8-7 8.5-7s8 3.2 8 7Z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M21 4 3 11l6.6 2.4L12 20l4-7 5-9Z"/><path d="M9.6 13.4 21 4"/></svg>
+            <svg class="bm" viewBox="0 0 24 24"><path d="M6.5 4h11v16l-5.5-4-5.5 4Z"/></svg>
           </div>
           <div class="cap"><b>The tip we give every chair.</b> Save it for your next color.</div>
         </div>
         <div class="post">
           <div class="top">
-            <div class="avatar" style="background:linear-gradient(135deg,#e0a24f,#7c4517);">K</div>
+            <div class="avatar" style="background:linear-gradient(135deg,#e0a24f,#7c4517);" aria-hidden="true">K</div>
             <div class="handle">Kettle &amp; Crumb<span>Caf&eacute; &middot; Warwick, RI</span></div>
-            <div class="dots">&middot;&middot;&middot;</div>
+            <div class="tag">Sample</div>
           </div>
           <div class="art craft">
             <div class="grain"></div><div class="vig"></div>
@@ -562,16 +671,79 @@
               <div class="sign">your morning, handmade</div>
             </div>
           </div>
-          <div class="actions">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5C12 20.5 3.5 15.4 3.5 9.2 3.5 6.6 5.6 4.9 7.9 4.9c1.7 0 3.2 1 3.9 2.4C12.5 5.9 14 4.9 15.8 4.9c2.3 0 4.4 1.7 4.4 4.3 0 6.2-8.2 11.3-8.2 11.3Z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.4c0 3.9-3.8 7-8.5 7-1 0-2-.1-2.9-.4L4 19.5l1.5-3.6C4.6 14.6 4 13.1 4 11.4c0-3.8 3.8-7 8.5-7s8 3.2 8 7Z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6.6 2.4L12 20l4-7 5-9Z"/><path d="M9.6 13.4 21 4"/></svg>
-            <svg class="bm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4h11v16l-5.5-4-5.5 4Z"/></svg>
+          <div class="actions" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 20.5C12 20.5 3.5 15.4 3.5 9.2 3.5 6.6 5.6 4.9 7.9 4.9c1.7 0 3.2 1 3.9 2.4C12.5 5.9 14 4.9 15.8 4.9c2.3 0 4.4 1.7 4.4 4.3 0 6.2-8.2 11.3-8.2 11.3Z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M20.5 11.4c0 3.9-3.8 7-8.5 7-1 0-2-.1-2.9-.4L4 19.5l1.5-3.6C4.6 14.6 4 13.1 4 11.4c0-3.8 3.8-7 8.5-7s8 3.2 8 7Z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M21 4 3 11l6.6 2.4L12 20l4-7 5-9Z"/><path d="M9.6 13.4 21 4"/></svg>
+            <svg class="bm" viewBox="0 0 24 24"><path d="M6.5 4h11v16l-5.5-4-5.5 4Z"/></svg>
           </div>
           <div class="cap"><b>What goes in before the doors do.</b> The quiet part of a good cup.</div>
         </div>
       </div>
-      <p class="samples-note">Sample concepts, not real clients &mdash; your posts are designed around your brand, your colors, and your real photos.</p>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Straight answers</span>
+        <h2>The questions every owner asks us.</h2>
+        <p>If something here isn&rsquo;t answered plainly enough, call and ask. We&rsquo;d rather talk you out of it now than disappoint you later.</p>
+      </div>
+
+      <div class="qa-grid reveal">
+        <div class="qa">
+          <h3>What exactly will you post to my Instagram?</h3>
+          <p>Your work, your people, and the things you&rsquo;d tell a customer standing in front of you &mdash; the 6am ovens, the tip you give every client, the story of the corner you&rsquo;ve been on for years. Four or five posts a week, in your colors and your voice. Never a wall of discounts.</p>
+        </div>
+        <div class="qa">
+          <h3>Do I get to see it before it goes out?</h3>
+          <p>Yes. Nothing publishes in your name that you haven&rsquo;t seen. And once a post goes out, Atlas checks that it actually published &mdash; if it didn&rsquo;t land, it gets caught and re-run instead of quietly vanishing.</p>
+        </div>
+        <div class="qa">
+          <h3>Do you need my passwords?</h3>
+          <p>No. Posting access is granted through Instagram and Facebook&rsquo;s own business tools &mdash; your password stays yours, and you can revoke our access whenever you want without changing a thing about your login.</p>
+        </div>
+        <div class="qa">
+          <h3>Am I locked in?</h3>
+          <p>No contract, ever. Two weeks free, then $100 a month, month to month. Cancel in any month you like: no notice period, no cancellation fee, no phone call where we try to keep you.</p>
+        </div>
+        <div class="qa">
+          <h3>What if I don&rsquo;t like a post?</h3>
+          <p>Say so and it changes &mdash; it&rsquo;s your name on it, so it&rsquo;s your call. If the whole look is off, we rebuild the look. That is exactly what the free two weeks are for.</p>
+        </div>
+        <div class="qa">
+          <h3>How much of my time does this take?</h3>
+          <p>Five minutes to start. After that: a glance at what we&rsquo;ve made, and a photo texted over when you happen to take a good one. That&rsquo;s the entire job on your end.</p>
+        </div>
+        <div class="qa">
+          <h3>What does the $100 actually cover?</h3>
+          <p>The website, the hosting, the posts, the Google profile, and the monthly recap. All of it. No setup fee, no per-post charge, no &ldquo;that&rsquo;s the premium tier.&rdquo; If we ever add something, it won&rsquo;t arrive as a new line on your bill.</p>
+        </div>
+        <div class="qa">
+          <h3>Why should I trust a company I haven&rsquo;t heard of?</h3>
+          <p>You shouldn&rsquo;t &mdash; not on a promise. That is precisely why the first two weeks are free and why there&rsquo;s no contract: you see the real site and the real posts before any money changes hands, and you can walk at any point. Judge the work, not the pitch.</p>
+        </div>
+      </div>
+
+      <div class="nots reveal">
+        <h3>What Atlas doesn&rsquo;t do</h3>
+        <ul>
+          <li>We don&rsquo;t buy followers or write reviews for you.</li>
+          <li>We don&rsquo;t run discount blasts or coupon spam.</li>
+          <li>We don&rsquo;t promise a #1 Google ranking &mdash; nobody honest can.</li>
+          <li>We don&rsquo;t manage ad spend; the $100 buys work, not ads.</li>
+          <li>We don&rsquo;t ask for a year up front, or any contract at all.</li>
+          <li>We don&rsquo;t hand you off to a sales team. There isn&rsquo;t one.</li>
+        </ul>
+        <p class="close">If one of those is what you were hoping for, we&rsquo;re the wrong shop &mdash; and we&rsquo;d rather say so now than take your money and find out in month three.</p>
+      </div>
+
+      <div class="ask reveal">
+        <span class="lbl">Still have a question?</span>
+        <a class="btn btn-primary" href="#signup" data-contact>Ask us &mdash; we answer</a>
+        <a class="btn btn-ghost" href="tel:+14013174668"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>Call (401) 317-4668</a>
+      </div>
     </div>
   </section>
 
@@ -581,34 +753,46 @@
       <h2>Let&rsquo;s put your business on the map.</h2>
       <p>One email starts your free two weeks. We&rsquo;ll take it from there.</p>
       <div class="cta-row">
-        <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/bJe3cv4Vx7tf5Jc7sN48006">Start now</a>
-        <a class="btn btn-ghost" href="#signup" data-signup>Start free, no card</a>
+        <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/bJe3cv4Vx7tf5Jc7sN48006">Start the free two weeks</a>
+        <a class="btn btn-ghost" href="#signup" data-signup>Start with no card</a>
       </div>
-      <p class="mail">14 days free, then $100/mo &middot; cancel anytime &middot; or email <a href="mailto:atlasinc.web@gmail.com">atlasinc.web@gmail.com</a></p>
+      <p class="fine mail">14 days free, then $100/mo &middot; cancel any month &middot; or email <a href="mailto:atlasinc.web@gmail.com">atlasinc.web@gmail.com</a></p>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap foot">
-    <div class="fbrand">
-      <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="width:24px;height:24px;">
-        <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.4"/>
-        <circle cx="16" cy="16" r="1.7" fill="currentColor"/>
-        <path class="needle" d="M16 5 L19 16 L16 27 L13 16 Z" stroke="var(--brass)" stroke-width="1.2"/>
-      </svg>
-      Atlas Inc.
+    <div>
+      <div class="fbrand">
+        <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="width:24px;height:24px;">
+          <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="16" cy="16" r="1.7" fill="currentColor"/>
+          <path class="needle" d="M16 5 L19 16 L16 27 L13 16 Z" stroke="var(--brass)" stroke-width="1.2"/>
+        </svg>
+        Atlas Inc.
+      </div>
+      <p class="ftag">Local marketing, done for you &mdash; websites, social, and Google presence for Rhode Island businesses.</p>
     </div>
-    <a class="btn btn-primary" href="tel:+14013174668" aria-label="Call Atlas Inc at (401) 317-4668"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>Call (401) 317-4668</a>
-    <div class="meta">
-      Local marketing, done for you<br>
-      Warwick, Rhode Island &middot; <a href="tel:+14013174668" style="border-bottom:1px solid var(--brass);">(401) 317-4668</a> &middot; atlasinc.web@gmail.com
+    <nav class="flinks" aria-label="Footer">
+      <a href="#included">What&rsquo;s included</a>
+      <a href="#work">The work</a>
+      <a href="#faq">Questions</a>
+      <a href="#signup" data-contact>Email us</a>
+    </nav>
+    <div>
+      <a class="btn btn-primary" href="tel:+14013174668" aria-label="Call Atlas Inc at (401) 317-4668"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>Call (401) 317-4668</a>
+      <div class="meta">
+        Warwick, Rhode Island<br>
+        <a href="mailto:atlasinc.web@gmail.com">atlasinc.web@gmail.com</a><br>
+        &copy; 2026 Atlas Inc.
+      </div>
     </div>
   </div>
 </footer>
 
-<div class="m-scrim" id="signup" hidden role="dialog" aria-modal="true" aria-labelledby="su-h">
-  <div class="m-panel">
+<div class="m-scrim" id="signup" hidden>
+  <div class="m-panel" role="dialog" aria-modal="true" aria-labelledby="su-h">
     <button class="m-x" type="button" data-close aria-label="Close">&times;</button>
     <div id="su-view">
       <span class="eyebrow" id="su-eyebrow">Free two weeks</span>
@@ -650,13 +834,25 @@
   </div>
 </div>
 
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Atlas Inc.",
+"description":"Done-for-you local marketing: website, social posts, and Google Business presence for local businesses, at one flat monthly price.",
+"url":"https://atlasincweb.github.io/","telephone":"+1-401-317-4668","email":"atlasinc.web@gmail.com",
+"address":{"@type":"PostalAddress","addressLocality":"Warwick","addressRegion":"RI","addressCountry":"US"},
+"areaServed":{"@type":"State","name":"Rhode Island"},
+"offers":{"@type":"Offer","name":"Local marketing, all in","price":"100","priceCurrency":"USD",
+"description":"$100 per month, everything included. Two weeks free, no contract, cancel any month."}}
+</script>
+
 <script>
 (function(){
-  // subtle nautical-chart contours behind the hero
+  // Static nautical-chart contours behind the hero. Drawn once (not animated) —
+  // a page selling trust shouldn't have a background that never sits still, and a
+  // permanent rAF loop burns battery on phones. Redraws on resize and on a theme
+  // flip, which the old animated version never handled.
   var c=document.getElementById('chart');
   if(!c) return;
-  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var ctx=c.getContext('2d'),W,H,dpr;
+  var ctx=c.getContext('2d'),W,H,dpr,lines=7;
   function ink(){
     var s=getComputedStyle(document.documentElement).getPropertyValue('--harbor').trim();
     return s||'#1C4E63';
@@ -666,16 +862,15 @@
     W=c.clientWidth;H=c.clientHeight;
     c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
   }
-  size();
-  var t=0, lines=7;
   function draw(){
+    size();
     ctx.clearRect(0,0,W,H);
     ctx.strokeStyle=ink();
     ctx.lineWidth=1;
     for(var i=0;i<lines;i++){
       var base=H*0.14 + i*(H*0.72/lines);
       var amp=14+i*4;
-      var phase=t*0.0006*(1+i*0.15)+i;
+      var phase=i;
       ctx.globalAlpha=0.10+ (i/lines)*0.16;
       ctx.beginPath();
       for(var x=0;x<=W;x+=8){
@@ -686,18 +881,34 @@
     }
     ctx.globalAlpha=1;
   }
-  function loop(){t+=16;draw();if(!reduce)requestAnimationFrame(loop);}
-  window.addEventListener('resize',function(){size();draw();});
   draw();
-  if(!reduce)requestAnimationFrame(loop);
+  var t;
+  window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(draw,120);});
+  if(window.matchMedia){
+    var mq=window.matchMedia('(prefers-color-scheme:dark)');
+    if(mq.addEventListener)mq.addEventListener('change',draw);
+    else if(mq.addListener)mq.addListener(draw);
+  }
+  if(window.MutationObserver){
+    new MutationObserver(draw).observe(document.documentElement,
+      {attributes:true,attributeFilter:['data-theme']});
+  }
 })();
 (function(){
+  // Scroll reveal. The one rule here: copy must NEVER end up permanently invisible,
+  // so every failure path falls back to showing everything.
   var els=document.querySelectorAll('.reveal');
-  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+  function showAll(){[].forEach.call(els,function(e){e.classList.add('in');});}
+  if(!('IntersectionObserver' in window)){showAll();return;}
+  // threshold 0 + a small bottom margin, not a fraction of the element: a section
+  // taller than the viewport can never expose 12% of itself and would never fire.
   var io=new IntersectionObserver(function(en){
     en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});
-  },{threshold:0.12});
-  els.forEach(function(e){io.observe(e);});
+  },{threshold:0,rootMargin:'0px 0px -8% 0px'});
+  [].forEach.call(els,function(e){io.observe(e);});
+  // Failsafe: if nothing at all has been revealed shortly after load, the observer
+  // isn't delivering — show the page rather than leave a blank site.
+  setTimeout(function(){if(!document.querySelector('.reveal.in'))showAll();},1500);
 })();
 (function(){
   // One popup, two modes. Replaces the old mailto: links (which did nothing for a
