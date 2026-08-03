@@ -805,6 +805,8 @@
   </div>
   <div class="wrap">
     <nav class="flegal" aria-label="Legal">
+      <a href="#signup" data-manage>Manage your plan</a>
+      <span class="sep" aria-hidden="true">&middot;</span>
       <a href="/terms/">Terms of Service</a>
       <span class="sep" aria-hidden="true">&middot;</span>
       <a href="/privacy/">Privacy Policy</a>
@@ -824,7 +826,7 @@
       <h3 id="su-h">Start free &mdash; no card.</h3>
       <p class="m-sub" id="su-sub">Tell us where to reach you. Atlas takes it from there.</p>
       <form class="m-form" id="su-form" novalidate>
-        <div class="m-field">
+        <div class="m-field" id="su-biz-field">
           <label for="su-biz">Business name</label>
           <input id="su-biz" type="text" autocomplete="organization"
                  placeholder="Bluebird Cafe" required>
@@ -955,6 +957,7 @@
       mail=document.getElementById('su-email'),
       comments=document.getElementById('su-comments'),
       commentsField=document.getElementById('su-comments-field'),
+      bizField=document.getElementById('su-biz-field'),
       eyebrow=document.getElementById('su-eyebrow'),
       h=document.getElementById('su-h'),
       sub=document.getElementById('su-sub'),
@@ -991,6 +994,22 @@
       subject:function(b){return 'New message — '+b;},
       marker:function(b,m,c){return 'ATLAS-CONTACT | Business: '+b+' | Email: '+m+
         ' | Comments: '+c+' | Source: website popup';}
+    },
+    // Existing clients only. The page NEVER shows the billing link and never says whether
+    // the address is a customer — the link is emailed, and only ever to the address already
+    // on the client record. See inbound.handle_manage for the full threat model.
+    manage:{
+      eyebrow:'Existing clients', title:'Manage your plan.',
+      sub:'Enter the email on your account and we’ll send you a link to update your '+
+        'card, download invoices, or cancel. It goes to your account email, not to this box.',
+      comments:false, biz:false, submit:'Email me my billing link',
+      fine:'The link only goes to the address on your account · (401) 317-4668',
+      doneTitle:'Check your email.',
+      doneSub:function(m){return 'If <b>'+esc(m)+'</b> is on an active plan, the billing '+
+        'link is on its way. It usually lands within a minute or two.';},
+      subject:function(b){return 'Manage my plan';},
+      marker:function(b,m,c){return 'ATLAS-MANAGE | Business: '+b+' | Email: '+m+
+        ' | Source: website popup';}
     }
   };
 
@@ -1000,6 +1019,9 @@
     h.textContent=cfg.title;
     sub.textContent=cfg.sub;
     commentsField.hidden=!cfg.comments;
+    // An existing client asking for their billing link should not have to retype their
+    // business name — we already know who they are from the address.
+    bizField.hidden=(cfg.biz===false);
     go.textContent=cfg.submit;
     fine.textContent=cfg.fine;
   }
@@ -1021,7 +1043,7 @@
     document.body.style.overflow='hidden';
     requestAnimationFrame(function(){
       scrim.classList.add('in');
-      setTimeout(function(){try{biz.focus();}catch(e){}},60);
+      setTimeout(function(){try{(bizField.hidden?mail:biz).focus();}catch(e){}},60);
     });
   }
   function close(){
@@ -1043,6 +1065,7 @@
   }
   wire('[data-signup]','signup');
   wire('[data-contact]','contact');
+  wire('[data-manage]','manage');
 
   scrim.querySelector('[data-close]').addEventListener('click',close);
   scrim.addEventListener('click',function(e){if(e.target===scrim)close();});
@@ -1064,7 +1087,7 @@
     var b=biz.value.trim().replace(/\|/g,'/'), m=mail.value.trim(),
         cRaw=comments.value.trim(),
         c=cRaw.replace(/\|/g,'/').replace(/\s+/g,' ');   // keep the marker parseable
-    if(!b){err.textContent='Please add your business name.';biz.focus();return;}
+    if(cfg.biz!==false && !b){err.textContent='Please add your business name.';biz.focus();return;}
     if(!EMAIL_RE.test(m)){err.textContent="That email doesn't look right.";mail.focus();return;}
     if(cfg.comments && !cRaw){err.textContent='Please add a short message.';comments.focus();return;}
     err.textContent='';
