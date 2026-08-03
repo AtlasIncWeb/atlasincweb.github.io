@@ -322,6 +322,14 @@
   .foot .meta{margin-top:18px;font-family:var(--mono);font-size:.74rem;
     color:var(--ink-faint);letter-spacing:.04em;line-height:2;}
   .foot .meta a{border-bottom:1px solid var(--brass);display:inline-block;padding:2px 0;}
+  /* legal bar — full width under the three footer columns */
+  .flegal{margin-top:38px;padding-top:22px;border-top:1px solid var(--line-soft);
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;
+    font-size:.86rem;color:var(--ink-faint);}
+  .flegal a{border-bottom:1px solid transparent;color:var(--ink-soft);}
+  .flegal a:hover{color:var(--ink);border-bottom-color:var(--brass);}
+  .flegal .sep{opacity:.45;}
+  @media (max-width:560px){.flegal .sep{display:none;}.flegal{gap:8px 16px;}}
 
   @media (max-width:760px){
     section{padding:58px 0;}
@@ -380,6 +388,12 @@
   @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .m-err{color:#ff9083;}}
   .m-fine{margin-top:14px;font-family:var(--mono);font-size:.68rem;
     letter-spacing:.04em;color:var(--ink-faint);text-align:center;}
+  .m-legal{margin:9px 0 0;font-size:.74rem;line-height:1.5;text-align:center;
+    color:var(--ink-faint);}
+  .m-legal a{color:var(--ink-soft);border-bottom:1px solid var(--line);}
+  .m-legal a:hover{color:var(--brass-deep);border-bottom-color:var(--brass);}
+  :root[data-theme="dark"] .m-legal a:hover{color:var(--brass);}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .m-legal a:hover{color:var(--brass);}}
   .m-done{text-align:center;padding:6px 0 2px;}
   .m-tick{width:56px;height:56px;margin:0 auto;border-radius:50%;display:flex;
     align-items:center;justify-content:center;color:var(--good);
@@ -789,6 +803,17 @@
       </div>
     </div>
   </div>
+  <div class="wrap">
+    <nav class="flegal" aria-label="Legal">
+      <a href="/terms/">Terms of Service</a>
+      <span class="sep" aria-hidden="true">&middot;</span>
+      <a href="/privacy/">Privacy Policy</a>
+      <span class="sep" aria-hidden="true">&middot;</span>
+      <a href="/refunds/">Refunds &amp; Cancellation</a>
+      <span class="sep" aria-hidden="true">&middot;</span>
+      <span>Atlas Inc. is a trade name of a sole proprietorship in Warwick, Rhode Island.</span>
+    </nav>
+  </div>
 </footer>
 
 <div class="m-scrim" id="signup" hidden>
@@ -818,6 +843,8 @@
         <button class="btn btn-primary" type="submit" id="su-go">Start my free two weeks</button>
       </form>
       <p class="m-fine" id="su-fine">No card &middot; cancel anytime &middot; or call (401) 317-4668</p>
+      <p class="m-legal">By starting, you agree to our <a href="/terms/" target="_blank" rel="noopener">Terms of Service</a>
+        and <a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a>.</p>
     </div>
     <div class="m-done" id="su-done" hidden>
       <div class="m-tick">
