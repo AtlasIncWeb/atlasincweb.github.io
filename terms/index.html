@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service — Atlas Inc.</title>
+<meta name="description" content="The terms of the Atlas Inc. service: $100 a month, two weeks free, no contract, cancel any month. What we deliver, what we need from you, and what we don't promise.">
+<style>
+  :root{
+    --bg:#E8EDEB; --surface:#F3F6F4;
+    --ink:#0F2A38; --ink-soft:#43585F; --ink-faint:#55686D;
+    --line:#CAD5D1; --line-soft:#DBE3DF;
+    --brass:#B0742B; --brass-deep:#8F5D1E; --harbor:#1C4E63;
+    --display:"Palatino Linotype",Palatino,"Iowan Old Style","Book Antiqua",Georgia,serif;
+    --body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Code",Consolas,"Liberation Mono",monospace;
+    --maxw:740px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0B1C24; --surface:#102730;
+      --ink:#E7EDEA; --ink-soft:#A6BABB; --ink-faint:#7C9295;
+      --line:#22414C; --line-soft:#1A343D;
+      --brass:#D8A055; --brass-deep:#C68A3E; --harbor:#7FB0C0;
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#E8EDEB; --surface:#F3F6F4; --ink:#0F2A38; --ink-soft:#43585F;
+    --ink-faint:#55686D; --line:#CAD5D1; --line-soft:#DBE3DF;
+    --brass:#B0742B; --brass-deep:#8F5D1E; --harbor:#1C4E63;
+  }
+  :root[data-theme="dark"]{
+    --bg:#0B1C24; --surface:#102730; --ink:#E7EDEA; --ink-soft:#A6BABB;
+    --ink-faint:#7C9295; --line:#22414C; --line-soft:#1A343D;
+    --brass:#D8A055; --brass-deep:#C68A3E; --harbor:#7FB0C0;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);
+    line-height:1.68;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  header.site{border-bottom:1px solid var(--line-soft);padding:22px 0;}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{display:inline-flex;align-items:center;gap:.6em;font-family:var(--display);
+    font-size:1.15rem;letter-spacing:.01em;}
+  .brand .mark{width:24px;height:24px;flex:0 0 auto;}
+  .brand .needle{stroke:var(--brass);}
+  .back{font-size:.92rem;color:var(--ink-soft);text-decoration:none;
+    border-bottom:1px solid var(--line);padding-bottom:2px;}
+  .back:hover{color:var(--brass-deep);border-color:var(--brass);}
+
+  main{padding:56px 0 40px;}
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--brass-deep);display:inline-flex;
+    align-items:center;gap:.6em;margin-bottom:14px;}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--brass);opacity:.7;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .eyebrow{color:var(--brass);}}
+  :root[data-theme="dark"] .eyebrow{color:var(--brass);}
+
+  h1{font-family:var(--display);font-size:clamp(2rem,5vw,2.7rem);line-height:1.15;
+    margin:0 0 12px;font-weight:400;letter-spacing:-.01em;}
+  h2{font-family:var(--display);font-size:1.32rem;font-weight:400;line-height:1.3;
+    margin:44px 0 12px;padding-top:20px;border-top:1px solid var(--line-soft);}
+  h2:first-of-type{border-top:none;padding-top:0;}
+  h3{font-size:1rem;font-weight:650;margin:26px 0 8px;letter-spacing:.01em;}
+  p{margin:0 0 14px;color:var(--ink-soft);}
+  li{color:var(--ink-soft);margin-bottom:8px;}
+  ul,ol{padding-left:22px;margin:0 0 14px;}
+  strong{color:var(--ink);font-weight:650;}
+  a{color:var(--harbor);text-decoration:underline;text-underline-offset:2px;
+    text-decoration-thickness:1px;}
+  a:hover{color:var(--brass-deep);}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) a:hover{color:var(--brass);}}
+  :root[data-theme="dark"] a:hover{color:var(--brass);}
+  a:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:3px;}
+
+  .lede{font-size:1.08rem;color:var(--ink-soft);margin-bottom:6px;}
+  .updated{font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;
+    color:var(--ink-faint);text-transform:uppercase;margin:0 0 38px;}
+
+  .card{background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;
+    padding:22px 24px;margin:22px 0;}
+  .card p:last-child,.card ul:last-child,.card li:last-child{margin-bottom:0;}
+  .card h3:first-child{margin-top:0;}
+
+  table{width:100%;border-collapse:collapse;margin:16px 0 20px;font-size:.94rem;}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line-soft);
+    vertical-align:top;color:var(--ink-soft);}
+  th{color:var(--ink);font-weight:650;font-size:.82rem;letter-spacing:.03em;
+    text-transform:uppercase;font-family:var(--mono);}
+  .tscroll{overflow-x:auto;}
+
+  footer{border-top:1px solid var(--line-soft);padding:34px 0 60px;margin-top:52px;
+    font-size:.9rem;color:var(--ink-faint);}
+  footer .flinks{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:16px;}
+  footer a{color:var(--ink-soft);text-decoration:none;}
+  footer a:hover{color:var(--brass-deep);}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) footer a:hover{color:var(--brass);}}
+  :root[data-theme="dark"] footer a:hover{color:var(--brass);}
+  @media (max-width:560px){main{padding:38px 0 30px;}h2{margin-top:34px;}}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../"><svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="16" r="1.7" fill="currentColor"/><path class="needle" d="M16 5 L19 16 L16 27 L13 16 Z" stroke-width="1.2"/></svg>Atlas Inc.</a>
+    <a class="back" href="../">&larr; Back to the site</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+<span class="eyebrow">Terms of Service</span>
+<h1>The deal, in plain English.</h1>
+<p class="lede">This page says what we owe you, what we need from you, and what happens if either of us wants out. We&rsquo;ve written it to be read, not to be survived.</p>
+<p class="updated">Effective 3 August 2026 &middot; Last updated 3 August 2026</p>
+
+<h2>1. Who you&rsquo;re dealing with</h2>
+<p><strong>Atlas Inc.</strong> is a trade name used by a sole proprietorship based in Warwick, Rhode Island. It is not a corporation, and nothing on this site or in these terms should be read as saying otherwise. Where these terms say &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;Atlas Inc.,&rdquo; they mean that business and its owner.</p>
+<div class="card">
+  <p>145 Essex Rd, Building B, Warwick, RI 02888<br>
+  <a href="mailto:atlasinc.web@gmail.com">atlasinc.web@gmail.com</a> &middot; <a href="tel:+14013174668">(401) 317-4668</a></p>
+</div>
+<p>&ldquo;You&rdquo; means the business that signs up for the service, and anyone you authorise to act for it.</p>
+
+<h2>2. What you&rsquo;re buying</h2>
+<p>One flat monthly service, everything included. Specifically:</p>
+<ul>
+  <li><strong>A website</strong> &mdash; built for your business, hosted by us, and kept up to date while you&rsquo;re a client.</li>
+  <li><strong>Social posts</strong> &mdash; roughly twenty posts a month, written and designed for your business and published to the Instagram and Facebook accounts you connect.</li>
+  <li><strong>Your Google Business listing</strong> &mdash; we keep the information on it accurate (hours, phone number, website, address, category), ask your customers for reviews, and draft replies to the reviews you receive.</li>
+  <li><strong>A monthly recap</strong> &mdash; a plain summary of what actually went out.</li>
+</ul>
+<p><strong>We do not post to Google Business.</strong> The Google part of the service is your listing and your reviews, not a posting feed. We mention it because the difference is easy to assume and we&rsquo;d rather be clear about it up front.</p>
+
+<h2>3. The free two weeks</h2>
+<p>New clients get <strong>fourteen days free</strong> before anything is charged. You can start with a card on file or without one &mdash; both routes exist and both are real.</p>
+<p>If you started <em>with</em> a card and do nothing, the trial rolls into a paid month automatically on day fifteen. If you cancel before then, you are charged nothing at all. If you started <em>without</em> a card, nothing happens automatically; we&rsquo;ll ask you before any money changes hands.</p>
+
+<h2>4. Price and billing</h2>
+<p><strong>$100 per month.</strong> There is no setup fee. There is no contract, no minimum term, and no cancellation fee.</p>
+<p>Billing is monthly in advance and renews automatically until you cancel. Payments are handled by <strong>Stripe</strong>. We never see, handle, or store your full card number &mdash; Stripe does, and you can read <a href="https://stripe.com/privacy" rel="noopener">their privacy policy</a>.</p>
+<p>If we ever change the price, existing clients get <strong>at least 30 days&rsquo; notice by email</strong> before it takes effect, and you can cancel in that window without paying the new rate.</p>
+
+<h3>Referral credit</h3>
+<p>If you refer another business that becomes a paying client, <strong>$50 a month comes off your bill</strong> for as long as they stay active. It stacks &mdash; two active referrals bring a $100 plan to $0. Credit is applied to your subscription, not paid out in cash, and it can reduce your bill to zero but never below it.</p>
+
+<h2>5. Cancelling</h2>
+<p>Cancel in any month you like. No notice period, no cancellation fee, and no phone call where we try to keep you. Full detail &mdash; including how to do it and what happens afterwards &mdash; is on the <a href="../refunds/">Refund &amp; Cancellation Policy</a>.</p>
+
+<h2>6. What we need from you</h2>
+<p>The service only works if we can actually do the work, so:</p>
+<ul>
+  <li><strong>Accurate information.</strong> Your real hours, phone number, address, services and prices. We publish what you tell us; if it&rsquo;s wrong, what we publish is wrong.</li>
+  <li><strong>Access to post.</strong> You connect your Instagram, Facebook and Google Business accounts so we can publish on your behalf. You can disconnect at any time &mdash; it&rsquo;s your account, and revoking access is always in your hands, not ours.</li>
+  <li><strong>The right to use what you give us.</strong> When you send us photos, a logo, or copy, you&rsquo;re confirming you own it or have permission to use it. We can&rsquo;t verify that for you, and we rely on it being true.</li>
+  <li><strong>A reply now and then.</strong> Some things &mdash; a review that needs a real answer, a factual correction &mdash; need you. We&rsquo;ll keep it to a minimum.</li>
+</ul>
+
+<h2>7. Who owns what</h2>
+<p><strong>You own your side.</strong> Your business name and brand, your social accounts, your Google listing, your customer relationships, the photos and copy you gave us, and the content we produced for your business. If you leave, that content is still yours to keep and use.</p>
+<p><strong>We own our side.</strong> The software that runs this service, our templates, our designs before they&rsquo;re applied to your business, and our internal processes. Those aren&rsquo;t transferred by paying for the service.</p>
+<p>If you cancel, ask and we&rsquo;ll send you the files for your website so you can host it elsewhere. We won&rsquo;t hold your own material hostage.</p>
+
+<h2>8. What we don&rsquo;t promise</h2>
+<div class="card">
+  <p><strong>We do not guarantee results.</strong> Not a number of customers, not a number of leads, not a sale, not a position in Google search results, not a follower count, and not a revenue figure.</p>
+  <p>Marketing is not a product with a guaranteed outcome, and any company that tells you otherwise is selling you something we&rsquo;re not. What we guarantee is <em>the work</em>: the site gets built, the posts get made and published, the listing gets kept accurate, and you get an honest monthly account of exactly what happened &mdash; including a month where the answer is &ldquo;less than we&rsquo;d like.&rdquo;</p>
+</div>
+
+<h2>9. Platforms we don&rsquo;t control</h2>
+<p>We publish through Instagram, Facebook and Google. Those are their platforms, running under their rules, and they change them without asking us. If one of them suspends an account, rejects a post, changes what its API allows, or removes a feature we were using, that is outside our control.</p>
+<p>What we owe you when it happens is honesty and effort: we&rsquo;ll tell you promptly, explain what actually broke, and find the way around it if there is one. We can&rsquo;t promise a platform will keep behaving.</p>
+
+<h2>10. Things we won&rsquo;t publish</h2>
+<p>We can decline work, or end the service, if we&rsquo;re asked to produce or publish:</p>
+<ul>
+  <li>anything illegal, or anything promoting illegal activity;</li>
+  <li>claims about your business we know to be false &mdash; a licence you don&rsquo;t hold, a warranty you don&rsquo;t offer, a certification you don&rsquo;t have;</li>
+  <li>false or disparaging claims about a competitor;</li>
+  <li>harassment, hate speech, or content targeting a private individual;</li>
+  <li>adult content, or content aimed at children in a way we think is inappropriate;</li>
+  <li>fake reviews, incentivised reviews that break platform rules, or anything designed to mislead a customer about who is speaking.</li>
+</ul>
+<p>This isn&rsquo;t a moral posture &mdash; those things get accounts banned and businesses sued, and we&rsquo;re not putting your listing at that risk or ours.</p>
+
+<h2>11. If we end it</h2>
+<p>We can stop serving an account. If we do it for any reason other than section 10, you get <strong>at least 30 days&rsquo; notice</strong> and a refund of any unused portion of the month. If it&rsquo;s under section 10, we may stop immediately, and we&rsquo;ll refund the unused part of the month either way.</p>
+
+<h2>12. Liability</h2>
+<p>We&rsquo;ll do this work carefully. If something still goes wrong, our total liability to you for any claim is limited to <strong>the amount you paid us in the three months before the claim</strong>.</p>
+<p>We aren&rsquo;t liable for indirect or consequential losses &mdash; lost profits, lost business, lost data held by a third-party platform &mdash; or for anything caused by information you gave us that turned out to be wrong. Nothing here limits liability that can&rsquo;t legally be limited.</p>
+<p>The service is provided as described on this site and in these terms, and otherwise without warranties we haven&rsquo;t explicitly made.</p>
+
+<h2>13. Changes to these terms</h2>
+<p>If we change anything material, existing clients get <strong>at least 30 days&rsquo; notice by email</strong> before it applies, and cancelling in that window is always an option. Minor corrections &mdash; a typo, a clearer sentence, a new contact address &mdash; we&rsquo;ll just make, and the &ldquo;last updated&rdquo; date at the top will move.</p>
+
+<h2>14. Law</h2>
+<p>These terms are governed by the laws of the State of Rhode Island, and any dispute belongs in the state or federal courts sitting in Rhode Island. If a court finds one part of this unenforceable, the rest still stands.</p>
+
+<h2>15. Talk to us</h2>
+<p>If something here is unclear or seems unfair, say so &mdash; <a href="mailto:atlasinc.web@gmail.com">atlasinc.web@gmail.com</a> or <a href="tel:+14013174668">(401) 317-4668</a>. We&rsquo;d rather fix a term than argue about it later.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav class="flinks" aria-label="Legal"><a href="../">Home</a><span>Terms of Service</span><a href="../privacy/">Privacy Policy</a><a href="../refunds/">Refunds &amp; Cancellation</a></nav>
+    <p>Atlas Inc. is a trade name used by a sole proprietorship in Warwick, Rhode Island.<br>
+    145 Essex Rd, Building B, Warwick, RI 02888 &middot; <a href="mailto:atlasinc.web@gmail.com">atlasinc.web@gmail.com</a> &middot; <a href="tel:+14013174668">(401) 317-4668</a><br>
+    &copy; 2026 Atlas Inc.</p>
+  </div>
+</footer>
+</body>
+</html>
