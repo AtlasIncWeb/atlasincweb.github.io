@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refund & Cancellation Policy — Atlas Inc.</title>
+<meta name="description" content="How to cancel Atlas Inc. — self-serve, email or phone — when it takes effect, what we refund in full, and what happens to your website and accounts afterwards.">
+<style>
+  :root{
+    --bg:#E8EDEB; --surface:#F3F6F4;
+    --ink:#0F2A38; --ink-soft:#43585F; --ink-faint:#55686D;
+    --line:#CAD5D1; --line-soft:#DBE3DF;
+    --brass:#B0742B; --brass-deep:#8F5D1E; --harbor:#1C4E63;
+    --display:"Palatino Linotype",Palatino,"Iowan Old Style","Book Antiqua",Georgia,serif;
+    --body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Code",Consolas,"Liberation Mono",monospace;
+    --maxw:740px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0B1C24; --surface:#102730;
+      --ink:#E7EDEA; --ink-soft:#A6BABB; --ink-faint:#7C9295;
+      --line:#22414C; --line-soft:#1A343D;
+      --brass:#D8A055; --brass-deep:#C68A3E; --harbor:#7FB0C0;
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#E8EDEB; --surface:#F3F6F4; --ink:#0F2A38; --ink-soft:#43585F;
+    --ink-faint:#55686D; --line:#CAD5D1; --line-soft:#DBE3DF;
+    --brass:#B0742B; --brass-deep:#8F5D1E; --harbor:#1C4E63;
+  }
+  :root[data-theme="dark"]{
+    --bg:#0B1C24; --surface:#102730; --ink:#E7EDEA; --ink-soft:#A6BABB;
+    --ink-faint:#7C9295; --line:#22414C; --line-soft:#1A343D;
+    --brass:#D8A055; --brass-deep:#C68A3E; --harbor:#7FB0C0;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);
+    line-height:1.68;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  header.site{border-bottom:1px solid var(--line-soft);padding:22px 0;}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{display:inline-flex;align-items:center;gap:.6em;font-family:var(--display);
+    font-size:1.15rem;letter-spacing:.01em;}
+  .brand .mark{width:24px;height:24px;flex:0 0 auto;}
+  .brand .needle{stroke:var(--brass);}
+  .back{font-size:.92rem;color:var(--ink-soft);text-decoration:none;
+    border-bottom:1px solid var(--line);padding-bottom:2px;}
+  .back:hover{color:var(--brass-deep);border-color:var(--brass);}
+
+  main{padding:56px 0 40px;}
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--brass-deep);display:inline-flex;
+    align-items:center;gap:.6em;margin-bottom:14px;}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--brass);opacity:.7;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .eyebrow{color:var(--brass);}}
+  :root[data-theme="dark"] .eyebrow{color:var(--brass);}
+
+  h1{font-family:var(--display);font-size:clamp(2rem,5vw,2.7rem);line-height:1.15;
+    margin:0 0 12px;font-weight:400;letter-spacing:-.01em;}
+  h2{font-family:var(--display);font-size:1.32rem;font-weight:400;line-height:1.3;
+    margin:44px 0 12px;padding-top:20px;border-top:1px solid var(--line-soft);}
+  h2:first-of-type{border-top:none;padding-top:0;}
+  h3{font-size:1rem;font-weight:650;margin:26px 0 8px;letter-spacing:.01em;}
+  p{margin:0 0 14px;color:var(--ink-soft);}
+  li{color:var(--ink-soft);margin-bottom:8px;}
+  ul,ol{padding-left:22px;margin:0 0 14px;}
+  strong{color:var(--ink);font-weight:650;}
+  a{color:var(--harbor);text-decoration:underline;text-underline-offset:2px;
+    text-decoration-thickness:1px;}
+  a:hover{color:var(--brass-deep);}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) a:hover{color:var(--brass);}}
+  :root[data-theme="dark"] a:hover{color:var(--brass);}
+  a:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:3px;}
+
+  .lede{font-size:1.08rem;color:var(--ink-soft);margin-bottom:6px;}
+  .updated{font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;
+    color:var(--ink-faint);text-transform:uppercase;margin:0 0 38px;}
+
+  .card{background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;
+    padding:22px 24px;margin:22px 0;}
+  .card p:last-child,.card ul:last-child,.card li:last-child{margin-bottom:0;}
+  .card h3:first-child{margin-top:0;}
+
+  table{width:100%;border-collapse:collapse;margin:16px 0 20px;font-size:.94rem;}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line-soft);
+    vertical-align:top;color:var(--ink-soft);}
+  th{color:var(--ink);font-weight:650;font-size:.82rem;letter-spacing:.03em;
+    text-transform:uppercase;font-family:var(--mono);}
+  .tscroll{overflow-x:auto;}
+
+  footer{border-top:1px solid var(--line-soft);padding:34px 0 60px;margin-top:52px;
+    font-size:.9rem;color:var(--ink-faint);}
+  footer .flinks{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:16px;}
+  footer a{color:var(--ink-soft);text-decoration:none;}
+  footer a:hover{color:var(--brass-deep);}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) footer a:hover{color:var(--brass);}}
+  :root[data-theme="dark"] footer a:hover{color:var(--brass);}
+  @media (max-width:560px){main{padding:38px 0 30px;}h2{margin-top:34px;}}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../"><svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="16" r="1.7" fill="currentColor"/><path class="needle" d="M16 5 L19 16 L16 27 L13 16 Z" stroke-width="1.2"/></svg>Atlas Inc.</a>
+    <a class="back" href="../">&larr; Back to the site</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+<span class="eyebrow">Refunds &amp; Cancellation</span>
+<h1>How to leave, and what you get back.</h1>
+<p class="lede">The sales page says &ldquo;cancel any month, no cancellation fee&rdquo; in seven different places. This page is the part that has to be true &mdash; exactly how you cancel, what happens next, and when money comes back.</p>
+<p class="updated">Effective 3 August 2026 &middot; Last updated 3 August 2026</p>
+
+<h2>Before you pay anything: two weeks free</h2>
+<p>Every new client gets <strong>fourteen days free</strong>. The site gets built, posts go out, and you see the actual work before a single dollar moves.</p>
+<p>If you started with a card on file and cancel before day fifteen, <strong>you are charged nothing at all</strong> &mdash; not a partial month, not a fee, nothing. If you started without a card, there is nothing to cancel and nothing to refund; we simply stop.</p>
+
+<h2>How to cancel</h2>
+<p>Three ways, all of them equally valid. None of them involves being talked out of it.</p>
+<div class="card">
+  <h3>1. Do it yourself, in about ten seconds</h3>
+  <p>Email us and we&rsquo;ll send you a link to your <strong>billing portal</strong> &mdash; a page hosted by Stripe where you cancel with one button, without going through us at all. The link is also in every monthly recap we send you, so you always have one to hand.</p>
+  <h3>2. Email</h3>
+  <p>Write to <a href="mailto:atlasinc.web@gmail.com">atlasinc.web@gmail.com</a> and say you want to cancel. You don&rsquo;t need to explain why, and you won&rsquo;t be asked to. We&rsquo;ll action it and confirm in writing.</p>
+  <h3>3. Phone</h3>
+  <p><a href="tel:+14013174668">(401) 317-4668</a>. Same result, same day.</p>
+</div>
+<p><strong>There is no notice period and no cancellation fee.</strong> There is no form to complete, no exit survey, and no requirement to speak to anyone.</p>
+
+<h2>When it takes effect</h2>
+<p>Cancellation takes effect <strong>at the end of the month you&rsquo;ve already paid for</strong>. You keep the full service until then &mdash; posts keep going out, the site stays up, the listing stays maintained &mdash; and you are not billed again.</p>
+<p>You&rsquo;re never cut off mid-month for cancelling. You paid for that month; you get that month.</p>
+<p>If you&rsquo;d rather stop immediately instead of running out the month, say so and we&rsquo;ll stop immediately &mdash; see the refund note below.</p>
+
+<h2>Refunds</h2>
+
+<h3>What we refund in full, always</h3>
+<p>No argument, no proration, no waiting:</p>
+<ul>
+  <li>You were <strong>charged during the free trial</strong>.</li>
+  <li>You were <strong>charged after you cancelled</strong>.</li>
+  <li>You were <strong>charged twice</strong> for the same month.</li>
+  <li>You were <strong>charged the wrong amount</strong>, including a referral credit we owed you and didn&rsquo;t apply.</li>
+  <li><strong>We didn&rsquo;t do the work.</strong> If a month went by and the posts didn&rsquo;t go out, the site went down and stayed down, or the listing went unmaintained, that month is refunded. You shouldn&rsquo;t have to ask, and if our own monthly recap shows a month like that, we&rsquo;ll raise it before you do.</li>
+</ul>
+<p>Refunds go back to the card you paid with, usually within five to ten business days once we&rsquo;ve issued them &mdash; the exact timing is your bank&rsquo;s, not ours.</p>
+
+<h3>What we don&rsquo;t automatically refund</h3>
+<p><strong>A month you used.</strong> If the work was delivered and you simply decided to stop, we don&rsquo;t refund the month already in progress &mdash; you keep the service through to the end of it instead. That&rsquo;s why the two free weeks exist: so the decision to pay comes <em>after</em> you&rsquo;ve seen the work, not before.</p>
+<p>If you ask us to stop immediately rather than run out the month, we&rsquo;ll stop immediately, but the month already paid isn&rsquo;t refunded &mdash; you&rsquo;re choosing to end service you&rsquo;ve already bought.</p>
+
+<h3>When we&rsquo;re the ones ending it</h3>
+<p>If we stop serving your account for any reason other than the conduct listed in section 10 of the <a href="../terms/">Terms of Service</a>, you get at least 30 days&rsquo; notice and <strong>a refund of the unused part of the month</strong>, prorated to the day.</p>
+
+<h3>If none of the above fits</h3>
+<p>Tell us what happened. We&rsquo;re a small business in Warwick, not a support queue, and a real person will read it. We&rsquo;d rather refund a month and part on decent terms than win an argument with somebody who tells other business owners about it.</p>
+
+<h2>What happens to your things</h2>
+<div class="tscroll">
+<table>
+  <thead><tr><th>What</th><th>What happens when you cancel</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Your website</strong></td><td>Stays live to the end of your paid period, then comes down. Ask us and we&rsquo;ll send you the files so you can host it anywhere. Free, and we won&rsquo;t drag our feet.</td></tr>
+    <tr><td><strong>Posts already published</strong></td><td>They&rsquo;re on your accounts and they&rsquo;re yours. We don&rsquo;t delete them, and we won&rsquo;t.</td></tr>
+    <tr><td><strong>Your social accounts</strong></td><td>Yours, untouched. We disconnect our posting access &mdash; and you can revoke it yourself, right now, without telling us.</td></tr>
+    <tr><td><strong>Your Google listing</strong></td><td>Yours. It was always yours. We stop maintaining it; nothing is removed.</td></tr>
+    <tr><td><strong>Photos and brand material</strong></td><td>Yours. Ask and we&rsquo;ll return them and delete our copies.</td></tr>
+    <tr><td><strong>Your data</strong></td><td>Deleted on request, except billing records tax law makes us keep. See the <a href="../privacy/">Privacy Policy</a>.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Coming back</h2>
+<p>If you cancel and later want to return, just ask. There&rsquo;s no penalty and no re-onboarding fee &mdash; though the free trial is once per business, so a returning client starts paying from day one.</p>
+
+<h2>Failed payments</h2>
+<p>If a card fails we&rsquo;ll email you and try again over the following days. We won&rsquo;t silently stop working or silently delete anything, and we won&rsquo;t hammer your card repeatedly. If it still can&rsquo;t be collected we&rsquo;ll pause the account and tell you plainly that we&rsquo;ve done so, with a date, before anything comes down.</p>
+
+<h2>Questions</h2>
+<p><a href="mailto:atlasinc.web@gmail.com">atlasinc.web@gmail.com</a> &middot; <a href="tel:+14013174668">(401) 317-4668</a><br>
+145 Essex Rd, Building B, Warwick, RI 02888</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav class="flinks" aria-label="Legal"><a href="../">Home</a><a href="../terms/">Terms of Service</a><a href="../privacy/">Privacy Policy</a><span>Refunds &amp; Cancellation</span></nav>
+    <p>Atlas Inc. is a trade name used by a sole proprietorship in Warwick, Rhode Island.<br>
+    145 Essex Rd, Building B, Warwick, RI 02888 &middot; <a href="mailto:atlasinc.web@gmail.com">atlasinc.web@gmail.com</a> &middot; <a href="tel:+14013174668">(401) 317-4668</a><br>
+    &copy; 2026 Atlas Inc.</p>
+  </div>
+</footer>
+</body>
+</html>
